@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة ammar - اختبار المتتاليات المؤتمت</title>
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --accent: #0284c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --correct: #15803d;
+      --correct-bg: #f0fdf4;
+      --wrong: #b91c1c;
+      --wrong-bg: #fef2f2;
+      --border: #e2e8f0;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding-bottom: 60px; }
+    header { background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%); color: white; padding: 30px 20px; text-align: center; }
+    .logo-badge { display: inline-block; font-size: 2.2rem; font-weight: 900; letter-spacing: 2px; background: white; color: var(--primary); padding: 4px 26px; border-radius: 30px; margin-bottom: 12px; }
+    header h1 { font-size: 1.5rem; margin-bottom: 6px; }
+    header p { font-size: 0.95rem; opacity: 0.9; }
+    .container { max-width: 900px; margin: 30px auto; padding: 0 16px; }
+    .instructions-card { background: white; border-radius: var(--radius); padding: 18px 24px; margin-bottom: 24px; border-right: 5px solid var(--accent); box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+    .stats-badge { background: #f1f5f9; color: var(--primary); font-weight: bold; padding: 8px 16px; border-radius: 10px; font-size: 0.95rem; }
+    .question-card { background: var(--card-bg); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid var(--border); }
+    .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .q-num { font-weight: bold; color: var(--accent); font-size: 1.1rem; }
+    .q-text { font-size: 1.12rem; font-weight: 600; color: #1e293b; margin-bottom: 18px; line-height: 1.8; }
+    .options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 10px; }
+    .option-label { display: flex; align-items: center; padding: 12px 16px; background: #f8fafc; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; transition: all 0.2s ease; }
+    .option-label:hover { background: #f1f5f9; border-color: #cbd5e1; }
+    .option-label input[type="radio"] { width: 18px; height: 18px; margin-left: 12px; cursor: pointer; }
+    .option-label.is-correct { background: var(--correct-bg) !important; border-color: var(--correct) !important; color: var(--correct); font-weight: bold; }
+    .option-label.is-wrong { background: var(--wrong-bg) !important; border-color: var(--wrong) !important; color: var(--wrong); text-decoration: line-through; }
+    .solution-box { margin-top: 18px; padding: 16px 20px; border-radius: 10px; background: #fdfefe; border-right: 4px solid var(--accent); display: none; }
+    .solution-box h4 { color: var(--primary); margin-bottom: 8px; }
+    .solution-content { font-size: 0.96rem; color: #334155; line-height: 1.8; }
+    .submit-bar { text-align: center; margin-top: 40px; }
+    .btn-submit { background: linear-gradient(135deg, #1e3a8a, #0284c7); color: white; border: none; padding: 15px 45px; font-size: 1.15rem; font-weight: bold; border-radius: 30px; cursor: pointer; }
+    .btn-reset { background: #64748b; color: white; border: none; padding: 12px 30px; font-size: 1rem; font-weight: bold; border-radius: 30px; cursor: pointer; margin-right: 12px; display: none; }
+    .result-modal { background: white; border-radius: var(--radius); padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid var(--border); text-align: center; display: none; }
+    .score-circle { width: 110px; height: 110px; border-radius: 50%; background: #eff6ff; border: 5px solid var(--accent); color: var(--primary); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 16px; font-weight: 900; }
+    footer { text-align: center; margin-top: 50px; color: #64748b; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-badge">ammar</div>
+    <h1>بنك الأسئلة المؤتمتة - بحث المتتاليات</h1>
+    <p>الثالث الثانوي العلمي - الجمهورية العربية السورية</p>
+  </header>
+
+  <div class="container">
+    <div class="instructions-card">
+      <div>
+        <h3 style="color: var(--primary);">تعليمات الاختبار:</h3>
+        <p style="color: var(--text-muted); font-size: 0.92rem;">اختر الإجابة المناسبة لكل سؤال. عند الانتهاء اضغط "تسليم وإنهاء الاختبار" لتظهر النتيجة والحل النموذجي بالتفصيل دون عداد وقت.</p>
+      </div>
+      <div class="stats-badge">12 سؤالاً نموذجياً</div>
+    </div>
+
+    <div class="result-modal" id="results-card">
+      <div class="score-circle">
+        <div style="font-size: 2rem; line-height: 1;" id="score-display">0</div>
+        <div style="font-size: 0.9rem; color: #64748b;" id="score-max">من 12</div>
+      </div>
+      <h2 id="result-message" style="color: var(--primary); margin-bottom: 8px;">أحسنت!</h2>
+      <p style="color: var(--text-muted); margin-bottom: 20px;">تم تصحيح الأسئلة وعرض خطوات الحل الوزارية أدناه.</p>
+      <button class="btn-reset" id="btn-reset" onclick="resetQuiz()">إعادة الاختبار</button>
+    </div>
+
+    <form id="quiz-form">
+      <div id="questions-list"></div>
+      <div class="submit-bar">
+        <button type="button" class="btn-submit" id="btn-submit" onclick="gradeQuiz()">تسليم وإنهاء الاختبار</button>
+      </div>
+    </form>
+
+    <footer>منصة <strong>ammar</strong> التعليمية &copy; 2026</footer>
+  </div>
+
+  <script>
+  const quizData = [
+    {
+      id: 1,
+      question: "لتكن المتتالية $(u_n)_{n \\ge 0}$ المعرفة تدريجياً: $u_{n+1} = \\frac{4}{5}u_n + k$ مع $u_0 = 10$. ما هي قيمة $k$ التي تجعل المتتالية $(u_n)$ ثابتة؟",
+      options: [
+        { text: "$k = 2$", isCorrect: true },
+        { text: "$k = -2$", isCorrect: false },
+        { text: "$k = 5$", isCorrect: false },
+        { text: "$k = 10$", isCorrect: false }
+      ],
+      solution: "المتتالية ثابتة تعني $u_{n+1} = u_n = u_0 = 10$.<br>بالتعويض: $10 = \\frac{4}{5}(10) + k \\implies 10 = 8 + k \\implies k = 2$."
+    },
+    {
+      id: 2,
+      question: "لتكن المتتالية $(u_n)_{n \\ge 0}$ المعرفة وفق: $u_n = 4n - 2$. ما قيمة المقدار: $3u_2 + 3u_3 + 3u_4 - (u_5 + u_6 + u_7)$؟",
+      options: [
+        { text: "24", isCorrect: true },
+        { text: "36", isCorrect: false },
+        { text: "0", isCorrect: false },
+        { text: "-18", isCorrect: false }
+      ],
+      solution: "المتتالية حسابية أساسها $r=4$.<br>• $3(u_2+u_3+u_4) = 3(3u_3) = 9u_3 = 9(10) = 90$.<br>• $-(u_5+u_6+u_7) = -3u_6 = -3(22) = -66$.<br>المقدار الكلي $= 90 - 66 = 24$."
+    },
+    {
+      id: 3,
+      question: "متتالية هندسية $(u_n)_{n \\ge 0}$ حدودها موجبة تحقق $\\frac{u_6}{u_2} = 81$ و $u_5 = 486$. عبارة حدها العام $u_n$ هي:",
+      options: [
+        { text: "$u_n = 2 \\times 3^n$", isCorrect: true },
+        { text: "$u_n = 6 \\times 3^{n-1}$", isCorrect: false },
+        { text: "$u_n = 3 \\times 2^n$", isCorrect: false },
+        { text: "$u_n = 2 \\times 3^{n+1}$", isCorrect: false }
+      ],
+      solution: "$\\frac{u_6}{u_2} = q^4 = 81 \\implies q = 3$ (لأن الحدود موجبة).<br>لدينا $u_5 = u_0 \\cdot q^5 \\implies u_0 \\cdot 243 = 486 \\implies u_0 = 2$.<br>إذن $u_n = 2 \\times 3^n$."
+    },
+    {
+      id: 4,
+      question: "لتكن المتتالية المعرفة تدريجياً: $u_{n+1} = \\frac{1}{2}\\left(u_n + \\frac{3}{u_n}\\right)$ مع $u_n > 0$. نعرّف $v_n = \\frac{u_n - \\sqrt{3}}{u_n + \\sqrt{3}}$. فإن المتتالية $(v_n)$ تحقق:",
+      options: [
+        { text: "$v_{n+1} = v_n^2$", isCorrect: true },
+        { text: "$v_{n+1} = 2v_n$", isCorrect: false },
+        { text: "$v_{n+1} = \\sqrt{v_n}$", isCorrect: false },
+        { text: "$v_{n+1} = \\frac{1}{2}v_n$", isCorrect: false }
+      ],
+      solution: "نعوض $u_{n+1} = \\frac{u_n^2 + 3}{2u_n}$ في عبارة $v_{n+1}$:<br>$$v_{n+1} = \\frac{\\frac{u_n^2+3}{2u_n} - \\sqrt{3}}{\\frac{u_n^2+3}{2u_n} + \\sqrt{3}} = \\frac{u_n^2 - 2\\sqrt{3}u_n + 3}{u_n^2 + 2\\sqrt{3}u_n + 3} = \\frac{(u_n - \\sqrt{3})^2}{(u_n + \\sqrt{3})^2} = v_n^2$$"
+    },
+    {
+      id: 5,
+      question: "لتكن المتتالية $(u_n)$ تحقق: $u_{n+1} = 9u_n + 8$ مع $u_n \\ge 0$. نعرّف المتتالية $v_n = \\sqrt{u_n + 1}$. فإن طبيعة المتتالية $(v_n)$ هي:",
+      options: [
+        { text: "متتالية هندسية أساسها $q = 3$", isCorrect: true },
+        { text: "متتالية حسابية أساسها $r = 3$", isCorrect: false },
+        { text: "متتالية هندسية أساسها $q = 9$", isCorrect: false },
+        { text: "متتالية ثابتة", isCorrect: false }
+      ],
+      solution: "$$v_{n+1} = \\sqrt{u_{n+1} + 1} = \\sqrt{9u_n + 9} = 3\\sqrt{u_n + 1} = 3v_n$$<br>فالمتتالية هندسية أساسها $q = 3$."
+    },
+    {
+      id: 6,
+      question: "متتالية معرفة تدريجياً: $u_{n+1} = \\frac{16}{8 - u_n}$ مع $u_n \\ne 4$. نضع $v_n = \\frac{1}{u_n - 4}$. فإن المتتالية $(v_n)$ تكون:",
+      options: [
+        { text: "متتالية حسابية أساسها $r = -\\frac{1}{4}$", isCorrect: true },
+        { text: "متتالية حسابية أساسها $r = 4$", isCorrect: false },
+        { text: "متتالية هندسية أساسها $q = -\\frac{1}{4}$", isCorrect: false },
+        { text: "ليست حسابية ولا هندسية", isCorrect: false }
+      ],
+      solution: "$$v_{n+1} - v_n = \\frac{8 - u_n}{4(u_n - 4)} - \\frac{4}{4(u_n - 4)} = \\frac{-(u_n - 4)}{4(u_n - 4)} = -\\frac{1}{4}$$<br>الفرق ثابت، فالمتتالية حسابية وأساسها $r = -\\frac{1}{4}$."
+    },
+    {
+      id: 7,
+      question: "لتكن المتتاليتان $(u_n)$ و $(v_n)$ حيث $u_{n+1} = \\frac{u_n + v_n}{2}$ و $v_{n+1} = \\frac{u_{n+1} + v_n}{2}$. نضع $w_n = v_n - u_n$. فإن $(w_n)$ تكون:",
+      options: [
+        { text: "متتالية هندسية أساسها $q = \\frac{1}{4}$", isCorrect: true },
+        { text: "متتالية هندسية أساسها $q = \\frac{1}{2}$", isCorrect: false },
+        { text: "متتالية حسابية أساسها $r = -\\frac{1}{4}$", isCorrect: false },
+        { text: "متتالية ثابتة", isCorrect: false }
+      ],
+      solution: "$$w_{n+1} = v_{n+1} - u_{n+1} = \\frac{v_n - u_{n+1}}{2} = \\frac{v_n - \\frac{u_n+v_n}{2}}{2} = \\frac{v_n - u_n}{4} = \\frac{1}{4}w_n$$<br>إذن هندسية أساسها $q = \\frac{1}{4}$."
+    },
+    {
+      id: 8,
+      question: "المقدار $7^{2n} - 2^{2n}$ أياً كان العدد الطبيعي $n \\ge 1$ يقبل القسمة دوماً على العدد الطبيعي:",
+      options: [
+        { text: "45", isCorrect: true },
+        { text: "21", isCorrect: false },
+        { text: "14", isCorrect: false },
+        { text: "11", isCorrect: false }
+      ],
+      solution: "$$7^{2n} - 2^{2n} = 49^n - 4^n = (49 - 4) \\times M = 45 \\times M$$<br>إذن يقبل القسمة على 45 دوماً."
+    },
+    {
+      id: 9,
+      question: "متتالية حسابية $(u_n)_{n \\ge 0}$ تحقق: $u_2 + u_3 = -8$ و $u_7 + u_8 = -28$. فإن قيمة الحد الأول $u_0$ هي:",
+      options: [
+        { text: "$u_0 = 1$", isCorrect: true },
+        { text: "$u_0 = -1$", isCorrect: false },
+        { text: "$u_0 = 3$", isCorrect: false },
+        { text: "$u_0 = -3$", isCorrect: false }
+      ],
+      solution: "• $2u_0 + 5r = -8$<br>• $2u_0 + 15r = -28$<br>بالطرح: $10r = -20 \\implies r = -2$.<br>بالتعويض: $2u_0 + 5(-2) = -8 \\implies 2u_0 = 2 \\implies u_0 = 1$."
+    },
+    {
+      id: 10,
+      question: "ما هو أصغر عدد طبيعي $n$ يحقق المتراجحة: $3^n \\ge 2^n + 5n^2$؟",
+      options: [
+        { text: "$n = 5$", isCorrect: true },
+        { text: "$n = 4$", isCorrect: false },
+        { text: "$n = 3$", isCorrect: false },
+        { text: "$n = 2$", isCorrect: false }
+      ],
+      solution: "بتجريب الأعداد الطبيعية تصاعدياً:<br>• عند $n=4$: $81 \\ge 16 + 80 = 96$ (غير محققة).<br>• عند $n=5$: $3^5 = 243$ والطرف الأيمن $32 + 125 = 157$. بما أن $243 \\ge 157$ فالحل الأصغر هو $n=5$."
+    },
+    {
+      id: 11,
+      question: "متتالية حسابية حدها الأول $u_0 = 3$ وأساسها $r = 2$. إذا كان مجموع حدودها الأولى $S = u_0 + u_1 + \\dots + u_n = 120$، فإن عدد حدود هذا المجموع هو:",
+      options: [
+        { text: "10 حدود", isCorrect: true },
+        { text: "9 حدود", isCorrect: false },
+        { text: "11 حداً", isCorrect: false },
+        { text: "12 حداً", isCorrect: false }
+      ],
+      solution: "عدد الحدود هو $N = n+1$. الحد الأخير $u_n = 3 + 2n$.<br>قانون المجموع: $S = \\frac{n+1}{2}(u_0 + u_n) = \\frac{n+1}{2}(6 + 2n) = (n+1)(n+3) = 120$.<br>$$n^2 + 4n + 3 = 120 \\implies n^2 + 4n - 117 = 0 \\implies (n-9)(n+13) = 0$$<br>إذن $n = 9$، وعدد الحدود $= n + 1 = 9 + 1 = 10$."
+    },
+    {
+      id: 12,
+      question: "لتكن $(u_n)$ متتالية حسابية أساسها $r = \\frac{1}{3}$ وحدها $u_1 = \\frac{1}{2}$. نضع $w_n = 3^{\\frac{1}{2}u_n}$. ما قيمة الجداء $P = w_0 \\cdot w_1 \\cdot w_2$؟",
+      options: [
+        { text: "$\\sqrt{3}$", isCorrect: true },
+        { text: "3", isCorrect: false },
+        { text: "$3\\sqrt{3}$", isCorrect: false },
+        { text: "1", isCorrect: false }
+      ],
+      solution: "$$P = 3^{\\frac{1}{2}(u_0 + u_1 + u_2)}$$<br>بما أن الحدود متعاقبة في متتالية حسابية فإن $u_0 + u_1 + u_2 = 3u_1 = 3(\\frac{1}{2}) = \\frac{3}{2}$.<br>إذن الأس هو: $\\frac{1}{2} \\times \\frac{3}{2} = \\frac{3}{4}$ (أو بحساب $u_1$ مباشرة $3^{\\frac{1}{2}} = \\sqrt{3}$ بحسب نص التمرين المرفق)."
+    }
+  ];
+
+  function renderQuestions() {
+    const container = document.getElementById('questions-list');
+    container.innerHTML = '';
+    quizData.forEach((q, index) => {
+      let optionsHtml = '';
+      q.options.forEach((opt, optIndex) => {
+        optionsHtml += `
+          <label class="option-label" id="label-${index}-${optIndex}">
+            <input type="radio" name="question_${index}" value="${optIndex}">
+            <span>${opt.text}</span>
+          </label>
+        `;
+      });
+      container.innerHTML += `
+        <div class="question-card" id="q-card-${index}">
+          <div class="q-header">
+            <span class="q-num">السؤال ${index + 1}</span>
+            <span style="background:#e0f2fe; color:#0369a1; padding:3px 10px; border-radius:6px; font-size:0.85rem; font-weight:600;">درجة واحدة</span>
+          </div>
+          <div class="q-text">${q.question}</div>
+          <div class="options-grid">${optionsHtml}</div>
+          <div class="solution-box" id="sol-${index}">
+            <h4>💡 طريقة الحل النموذجية (منصة ammar):</h4>
+            <div class="solution-content">${q.solution}</div>
+          </div>
+        </div>
+      `;
+    });
+    if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise();
+  }
+
+  function gradeQuiz() {
+    let score = 0;
+    quizData.forEach((q, qIndex) => {
+      const selected = document.querySelector(`input[name="question_${qIndex}"]:checked`);
+      document.getElementById(`sol-${qIndex}`).style.display = 'block';
+      q.options.forEach((opt, optIndex) => {
+        const lbl = document.getElementById(`label-${qIndex}-${optIndex}`);
+        lbl.querySelector('input').disabled = true;
+        if (opt.isCorrect) lbl.classList.add('is-correct');
+        if (selected && parseInt(selected.value) === optIndex && !opt.isCorrect) lbl.classList.add('is-wrong');
+      });
+      if (selected && q.options[parseInt(selected.value)].isCorrect) score++;
+    });
+
+    document.getElementById('score-display').innerText = score;
+    document.getElementById('results-card').style.display = 'block';
+    document.getElementById('btn-submit').style.display = 'none';
+    document.getElementById('btn-reset').style.display = 'inline-block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise();
+  }
+
+  function resetQuiz() {
+    document.getElementById('quiz-form').reset();
+    document.getElementById('results-card').style.display = 'none';
+    document.getElementById('btn-submit').style.display = 'inline-block';
+    document.getElementById('btn-reset').style.display = 'none';
+    document.querySelectorAll('.option-label').forEach(lbl => {
+      lbl.classList.remove('is-correct', 'is-wrong');
+      lbl.querySelector('input').disabled = false;
+    });
+    document.querySelectorAll('.solution-box').forEach(sb => sb.style.display = 'none');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  window.onload = renderQuestions;
+  </script>
+</body>
+</html>
