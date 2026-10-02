@@ -65,15 +65,15 @@
 
   <header>
     <div class="logo-badge">ammar</div>
-    <h1>بنك الأسئلة المؤتمتة الشامل - المتتاليات (60 سؤالاً مستقلاً)</h1>
+    <h1>بنك الأسئلة المؤتمتة الشامل - بحث المتتاليات (60 سؤالاً)</h1>
     <p>الثالث الثانوي العلمي - الجمهورية العربية السورية</p>
   </header>
 
   <div class="container">
     <div class="instructions-card">
       <div>
-        <h3 style="color: var(--primary); margin-bottom: 4px;">تعليمات الاختبار الذاتي:</h3>
-        <p style="color: var(--text-muted); font-size: 0.92rem;">يضم الاختبار 60 سؤالاً مؤتمتاً مستقلاً تماماً في المتتاليات وقواعدها (البرهان بالتدريج، المتتالية الحسابية والهندسية، الاطراد، المحدودية، والمجاميع). لا يوجد عداد وقت. عند الانتهاء اضغط "تسليم وإنهاء الاختبار" لتظهر النتيجة والحل النموذجي لكل سؤال بالتفصيل.</p>
+        <h3 style="color: var(--primary); margin-bottom: 4px;">تعليمات الاختبار الذاتي الشامل:</h3>
+        <p style="color: var(--text-muted); font-size: 0.92rem;">يضم الاختبار 60 سؤالاً مؤتمتاً مستقلاً تغطي كافة أفكار المتتاليات وقواعدها بدقة (دون أسئلة نهايات). لا يوجد عداد وقت. عند الانتهاء اضغط "تسليم وإنهاء الاختبار" لتظهر نتيجتك والحل النموذجي لكل سؤال بالتفصيل.</p>
       </div>
       <div class="stats-badge">60 سؤالاً مستقلاً</div>
     </div>
@@ -105,367 +105,667 @@
 
   <script>
   const quizData = [
-    {
-      "id": 1,
-      "question": "لتكن المتتالية $(u_n)_{n \\ge 0}$ المعرفة تدريجياً وفق: $u_{n+1} = \\frac{3}{4}u_n + a$ مع $u_0 = 8$. ما هي قيمة $a$ التي تجعل المتتالية $(u_n)$ ثابتة؟",
-      "options": [{"text": "$a = 2$", "isCorrect": true}, {"text": "$a = -2$", "isCorrect": false}, {"text": "$a = 4$", "isCorrect": false}, {"text": "$a = 8$", "isCorrect": false}],
-      "solution": "المتتالية ثابتة تعني أن جميع حدودها متساوية: $u_{n+1} = u_n = u_0 = 8$.<br>بالتعويض في العلاقة التدريجية:<br>$$8 = \\frac{3}{4}(8) + a \\implies 8 = 6 + a \\implies a = 2$$"
-    },
-    {
-      "id": 2,
-      "question": "لتكن المتتالية الحسابية $(u_n)_{n \\ge 0}$ المعرفة بـ $u_n = 3n - 1$. ما قيمة المقدار: $4u_2 + 4u_3 + 4u_4 - (u_5 + u_6 + u_7)$؟",
-      "options": [{"text": "45", "isCorrect": true}, {"text": "72", "isCorrect": false}, {"text": "60", "isCorrect": false}, {"text": "36", "isCorrect": false}],
-      "solution": "باستخدام التناظر الحسابي والحد الأوسط:<br>• $4(u_2 + u_3 + u_4) = 4(3u_3) = 12u_3$. ولدينا $u_3 = 3(3) - 1 = 8$، إذن الناتج $12 \\times 8 = 96$.<br>• $-(u_5 + u_6 + u_7) = -3u_6$. ولدينا $u_6 = 3(6) - 1 = 17$، إذن الناتج $-3 \\times 17 = -51$.<br>المقدار الكلي $= 96 - 51 = 45$."
-    },
-    {
-      "id": 3,
-      "question": "متتالية حسابية $(u_n)_{n \\ge 0}$ تحقق $u_4 = 10$. فإن قيمة المجموع $u_2 + u_3 + u_4 + u_5 + u_6$ تساوي:",
-      "options": [{"text": "50", "isCorrect": true}, {"text": "40", "isCorrect": false}, {"text": "60", "isCorrect": false}, {"text": "45", "isCorrect": false}],
-      "solution": "في المتتالية الحسابية، مجموع 5 حدود متعاقبة حدها الأوسط $u_4$ يساوي:<br>$$S = 5 \\times u_4 = 5 \\times 10 = 50$$"
-    },
-    {
-      "id": 4,
-      "question": "متتالية هندسية $(u_n)_{n \\ge 0}$ حدودها موجبة تحقق $\\frac{u_6}{u_2} = 16$ و $u_5 = 160$. فإن عبارة الحد العام $u_n$ هي:",
-      "options": [{"text": "$u_n = 5 \\times 2^n$", "isCorrect": true}, {"text": "$u_n = 10 \\times 2^{n-1}$", "isCorrect": false}, {"text": "$u_n = 2 \\times 5^n$", "isCorrect": false}, {"text": "$u_n = 5 \\times 4^n$", "isCorrect": false}],
-      "solution": "لدينا $\\frac{u_6}{u_2} = q^4 = 16 \\implies q = 2$ (لأن الحدود موجبة).<br>ولدينا $u_5 = u_0 \\cdot q^5 \\implies u_0 \\cdot 32 = 160 \\implies u_0 = 5$.<br>إذن $u_n = 5 \\times 2^n$."
-    },
-    {
-      "id": 5,
-      "question": "متتالية حسابية $(u_n)_{n \\ge 0}$ تحقق $u_{10} - u_5 = 15$ و $u_3 = 8$. ما هي قيمة $2u_0 + u_4$؟",
-      "options": [{"text": "9", "isCorrect": true}, {"text": "12", "isCorrect": false}, {"text": "-7", "isCorrect": false}, {"text": "15", "isCorrect": false}],
-      "solution": "لدينا $u_{10} - u_5 = 5r = 15 \\implies r = 3$.<br>وحيث أن $u_3 = u_0 + 3r \\implies 8 = u_0 + 9 \\implies u_0 = -1$.<br>نحسب $u_4 = u_0 + 4r = -1 + 12 = 11$.<br>إذن: $2u_0 + u_4 = 2(-1) + 11 = 9$."
-    },
-    {
-      "id": 6,
-      "question": "متتالية حسابية $(u_n)_{n \\ge 0}$ تحقق: $u_3 + u_4 = -12$ و $u_9 + u_{10} = -36$. فإن قيمة الحد الأول $u_0$ هي:",
-      "options": [{"text": "1", "isCorrect": true}, {"text": "-1", "isCorrect": false}, {"text": "2", "isCorrect": false}, {"text": "-3", "isCorrect": false}],
-      "solution": "• $u_3 + u_4 = (u_0 + 3r) + (u_0 + 4r) = 2u_0 + 7r = -12$ (1)<br>• $u_9 + u_{10} = (u_0 + 9r) + (u_0 + 10r) = 2u_0 + 19r = -36$ (2)<br>بطرح (1) من (2): $12r = -24 \\implies r = -2$.<br>بالتعويض في (1): $2u_0 + 7(-2) = -12 \\implies 2u_0 = 2 \\implies u_0 = 1$."
-    },
-    {
-      "id": 7,
-      "question": "متتالية حسابية حدها الأول $u_0 = 5$ وأساسها $r = 2$. إذا كان المجموع $u_0 + u_1 + \\dots + u_n = 165$، فإن عدد حدود هذا المجموع هو:",
-      "options": [{"text": "11 حداً", "isCorrect": true}, {"text": "10 حدود", "isCorrect": false}, {"text": "12 حداً", "isCorrect": false}, {"text": "15 حداً", "isCorrect": false}],
-      "solution": "عدد الحدود هو $N = n+1$، والحد العام $u_n = 5 + 2n$.<br>$$S = \\frac{n+1}{2}(u_0 + u_n) = \\frac{n+1}{2}(10 + 2n) = (n+1)(n+5) = 165$$<br>$$n^2 + 6n + 5 = 165 \\implies n^2 + 6n - 160 = 0 \\implies (n-10)(n+16) = 0$$<br>بما أن $n \\in \\mathbb{N}$ فإن $n = 10$. وعدد الحدود هو $n + 1 = 11$ حداً."
-    },
-    {
-      "id": 8,
-      "question": "المقدار $2^{3n} - 1$ أياً كان العدد الطبيعي $n \\ge 1$ يقبل القسمة دوماً على العدد:",
-      "options": [{"text": "7", "isCorrect": true}, {"text": "5", "isCorrect": false}, {"text": "3", "isCorrect": false}, {"text": "2", "isCorrect": false}],
-      "solution": "$$2^{3n} - 1 = (2^3)^n - 1^n = 8^n - 1^n = (8 - 1)(8^{n-1} + \\dots + 1) = 7 \\times M$$<br>حيث $M$ عدد طبيعي، وبالتالي المقدار مضاعف دوماً للعدد 7."
-    },
-    {
-      "id": 9,
-      "question": "المقدار $3^{2n} - 2^n$ أياً كان العدد الطبيعي $n \\ge 1$ هو دوماً مضاعف للعدد الطبيعي:",
-      "options": [{"text": "7", "isCorrect": true}, {"text": "5", "isCorrect": false}, {"text": "9", "isCorrect": false}, {"text": "4", "isCorrect": false}],
-      "solution": "$$3^{2n} - 2^n = (3^2)^n - 2^n = 9^n - 2^n = (9 - 2) \\times M = 7 \\times M$$<br>إذن المقدار مضاعف للعدد 7."
-    },
-    {
-      "id": 10,
-      "question": "المقدار $3^{30} - 2^{10}$ يقبل القسمة على العدد الطبيعي:",
-      "options": [{"text": "25", "isCorrect": true}, {"text": "15", "isCorrect": false}, {"text": "75", "isCorrect": false}, {"text": "125", "isCorrect": false}],
-      "solution": "$$3^{30} - 2^{10} = (3^3)^{10} - 2^{10} = 27^{10} - 2^{10} = (27 - 2) \\times M = 25 \\times M$$<br>وبالتالي هو مضاعف للعدد 25."
-    },
-    {
-      "id": 11,
-      "question": "المقدار $5^{3n} - 7^{2n}$ أياً كان العدد الطبيعي $n \\ge 1$ هو دوماً مضاعف للعدد:",
-      "options": [{"text": "76", "isCorrect": true}, {"text": "55", "isCorrect": false}, {"text": "81", "isCorrect": false}, {"text": "30", "isCorrect": false}],
-      "solution": "$$5^{3n} - 7^{2n} = (5^3)^n - (7^2)^n = 125^n - 49^n = (125 - 49) \\times M = 76 \\times M$$<br>إذن المقدار مضاعف للعدد 76."
-    },
-    {
-      "id": 12,
-      "question": "المقدار $2^{3n} - 3^n$ أياً كان العدد الطبيعي $n \\ge 1$ يقبل القسمة على:",
-      "options": [{"text": "5", "isCorrect": true}, {"text": "3", "isCorrect": false}, {"text": "7", "isCorrect": false}, {"text": "2", "isCorrect": false}],
-      "solution": "$$2^{3n} - 3^n = 8^n - 3^n = (8 - 3) \\times M = 5 \\times M$$<br>إذن يقبل القسمة على 5."
-    },
-    {
-      "id": 13,
-      "question": "المقدار $4^n - 1$ أياً كان العدد الطبيعي $n \\ge 1$ هو دوماً مضاعف للعدد:",
-      "options": [{"text": "3", "isCorrect": true}, {"text": "2", "isCorrect": false}, {"text": "4", "isCorrect": false}, {"text": "5", "isCorrect": false}],
-      "solution": "$$4^n - 1 = (4 - 1)(4^{n-1} + \\dots + 1) = 3 \\times M$$<br>وبالتالي هو مضاعف للعدد 3."
-    },
-    {
-      "id": 14,
-      "question": "ما هو أصغر عدد طبيعي $n$ يحقق المتراجحة: $3^n \\ge 2^n + 5n^2$؟",
-      "options": [{"text": "$n = 5$", "isCorrect": true}, {"text": "$n = 4$", "isCorrect": false}, {"text": "$n = 3$", "isCorrect": false}, {"text": "$n = 2$", "isCorrect": false}],
-      "solution": "بالتجريب المنظم للأعداد الطبيعية من البداية:<br>• $n=1: 3 \\ge 7$ (خاطئة).<br>• $n=2: 9 \\ge 24$ (خاطئة).<br>• $n=3: 27 \\ge 53$ (خاطئة).<br>• $n=4: 81 \\ge 16 + 80 = 96$ (خاطئة).<br>• $n=5: 243 \\ge 32 + 125 = 157$ (صحيحة).<br>إذن أصغر عدد طبيعي يحققها هو $n = 5$."
-    },
-    {
-      "id": 15,
-      "question": "ما هو أصغر عدد طبيعي $n$ يحقق المتراجحة: $3^n \\ge (n+2)^2$؟",
-      "options": [{"text": "$n = 3$", "isCorrect": true}, {"text": "$n = 2$", "isCorrect": false}, {"text": "$n = 1$", "isCorrect": false}, {"text": "$n = 4$", "isCorrect": false}],
-      "solution": "• $n=1: 3^1 = 3$ و $(1+2)^2 = 9$ (غير محققة).<br>• $n=2: 3^2 = 9$ و $(2+2)^2 = 16$ (غير محققة).<br>• $n=3: 3^3 = 27$ و $(3+2)^2 = 25$. بما أن $27 \\ge 25$ (محققة).<br>فإن أصغر عدد طبيعي هو $n = 3$."
-    },
-    {
-      "id": 16,
-      "question": "لتكن المتتالية المعرفة تدريجياً: $u_{n+1} = \\frac{1}{2}\\left(u_n + \\frac{2}{u_n}\\right)$ مع $u_n > 0$. نعرّف $v_n = \\frac{u_n - \\sqrt{2}}{u_n + \\sqrt{2}}$. فإن المتتالية $(v_n)$ تحقق العلاقة:",
-      "options": [{"text": "$v_{n+1} = v_n^2$", "isCorrect": true}, {"text": "$v_{n+1} = 2v_n$", "isCorrect": false}, {"text": "$v_{n+1} = \\sqrt{v_n}$", "isCorrect": false}, {"text": "$v_{n+1} = \\frac{1}{2}v_n$", "isCorrect": false}],
-      "solution": "نعوض $u_{n+1} = \\frac{u_n^2 + 2}{2u_n}$ في عبارة $v_{n+1}$:<br>$$v_{n+1} = \\frac{\\frac{u_n^2+2}{2u_n} - \\sqrt{2}}{\\frac{u_n^2+2}{2u_n} + \\sqrt{2}} = \\frac{u_n^2 - 2\\sqrt{2}u_n + 2}{u_n^2 + 2\\sqrt{2}u_n + 2} = \\frac{(u_n - \\sqrt{2})^2}{(u_n + \\sqrt{2})^2} = v_n^2$$"
-    },
-    {
-      "id": 17,
-      "question": "لتكن المتتالية $(u_n)$ حيث $u_{n+1} = 4u_n + 3$ مع $u_n \\ge 0$. نضع $v_n = \\sqrt{u_n + 1}$. فإن طبيعة المتتالية $(v_n)$ هي:",
-      "options": [{"text": "هندسية أساسها $q = 2$", "isCorrect": true}, {"text": "حسابية أساسها $r = 2$", "isCorrect": false}, {"text": "هندسية أساسها $q = 4$", "isCorrect": false}, {"text": "ثابتة", "isCorrect": false}],
-      "solution": "$$v_{n+1} = \\sqrt{u_{n+1} + 1} = \\sqrt{4u_n + 3 + 1} = \\sqrt{4(u_n + 1)} = 2\\sqrt{u_n + 1} = 2v_n$$<br>إذن $(v_n)$ متتالية هندسية أساسها $q = 2$."
-    },
-    {
-      "id": 18,
-      "question": "متتالية معرفة تدريجياً: $u_{n+1} = \\frac{9}{6 - u_n}$ مع $u_n \\ne 3$. نضع $v_n = \\frac{1}{u_n - 3}$. فإن المتتالية $(v_n)$ تكون:",
-      "options": [{"text": "حسابية أساسها $r = -\\frac{1}{3}$", "isCorrect": true}, {"text": "حسابية أساسها $r = 3$", "isCorrect": false}, {"text": "هندسية أساسها $q = 3$", "isCorrect": false}, {"text": "ليست حسابية ولا هندسية", "isCorrect": false}],
-      "solution": "$$v_{n+1} = \\frac{1}{\\frac{9}{6-u_n} - 3} = \\frac{6 - u_n}{9 - 18 + 3u_n} = \\frac{6 - u_n}{3u_n - 9} = \\frac{6 - u_n}{3(u_n - 3)}$$<br>نطرح $v_n = \\frac{1}{u_n - 3} = \\frac{3}{3(u_n - 3)}$:<br>$$v_{n+1} - v_n = \\frac{6 - u_n - 3}{3(u_n - 3)} = \\frac{-(u_n - 3)}{3(u_n - 3)} = -\\frac{1}{3}$$<br>فالمتتالية حسابية وأساسها $r = -\\frac{1}{3}$."
-    },
-    {
-      "id": 19,
-      "question": "متتالية معرفة تدريجياً بـ $u_{n+1} = \\frac{u_n}{2 + u_n}$ مع $u_n > 0$. نعرّف $v_n = \\frac{1}{u_n}$. فإن المتتالية $(v_n)$ تكون:",
-      "options": [{"text": "ليست حسابية لأن الفرق غير ثابت", "isCorrect": true}, {"text": "حسابية أساسها $r = 1$", "isCorrect": false}, {"text": "هندسية أساسها $q = 2$", "isCorrect": false}, {"text": "ثابتة", "isCorrect": false}],
-      "solution": "$$v_{n+1} = \\frac{1}{u_{n+1}} = \\frac{2 + u_n}{u_n} = \\frac{2}{u_n} + 1 = 2v_n + 1$$<br>نلاحظ أن $v_{n+1} - v_n = v_n + 1$ (غير ثابت لأنه يعتمد على $n$)، إذن ليست حسابية."
-    },
-    {
-      "id": 20,
-      "question": "لتكن المتتالية $u_{n+1} = \\frac{u_n}{1 + 3u_n}$ مع $u_n > 0$. نضع $v_n = \\frac{1}{u_n}$. فإن طبيعة المتتالية $(v_n)$ هي:",
-      "options": [{"text": "متتالية حسابية أساسها $r = 3$", "isCorrect": true}, {"text": "متتالية هندسية أساسها $q = 3$", "isCorrect": false}, {"text": "متتالية حسابية أساسها $r = 1$", "isCorrect": false}, {"text": "متتالية ثابتة", "isCorrect": false}],
-      "solution": "$$v_{n+1} = \\frac{1}{u_{n+1}} = \\frac{1 + 3u_n}{u_n} = \\frac{1}{u_n} + 3 = v_n + 3$$<br>بما أن $v_{n+1} - v_n = 3$، فإن $(v_n)$ متتالية حسابية أساسها $r = 3$."
-    },
-    {
-      "id": 21,
-      "question": "متتاليتان $(u_n)$ و $(v_n)$ تحققان: $u_{n+1} = \\frac{u_n + v_n}{2}$ و $v_{n+1} = \\frac{u_{n+1} + v_n}{2}$. نضع $w_n = v_n - u_n$. فإن المتتالية $(w_n)$ تكون:",
-      "options": [{"text": "هندسية أساسها $q = \\frac{1}{4}$", "isCorrect": true}, {"text": "هندسية أساسها $q = \\frac{1}{2}$", "isCorrect": false}, {"text": "حسابية أساسها $r = \\frac{1}{4}$", "isCorrect": false}, {"text": "ثابتة", "isCorrect": false}],
-      "solution": "$$w_{n+1} = v_{n+1} - u_{n+1} = \\frac{v_n - u_{n+1}}{2} = \\frac{v_n - \\frac{u_n+v_n}{2}}{2} = \\frac{v_n - u_n}{4} = \\frac{1}{4}w_n$$<br>إذن هندسية أساسها $q = \\frac{1}{4}$."
-    },
-    {
-      "id": 22,
-      "question": "لتكن $(t_n)$ و $(s_n)$ متتاليتين تحققان: $s_{n+1} = \\frac{t_n + 3s_n}{4}$ و $t_{n+1} = \\frac{t_n + 2s_n}{3}$. نعرّف $w_n = 3t_n + 8s_n$. فإن المتتالية $(w_n)$ تكون:",
-      "options": [{"text": "متتالية ثابتة", "isCorrect": true}, {"text": "متتالية هندسية أساسها 2", "isCorrect": false}, {"text": "متتالية حسابية أساسها 1", "isCorrect": false}, {"text": "متتالية غير مطردة", "isCorrect": false}],
-      "solution": "نعوض في $w_{n+1}$:<br>$$w_{n+1} = 3\\left(\\frac{t_n + 2s_n}{3}\\right) + 8\\left(\\frac{t_n + 3s_n}{4}\\right) = (t_n + 2s_n) + 2(t_n + 3s_n) = 3t_n + 8s_n = w_n$$<br>بما أن $w_{n+1} = w_n$ فالمتتالية ثابتة."
-    },
-    {
-      "id": 23,
-      "question": "متتالية تحقق: $u_{n+2} = 7u_{n+1} - 10u_n$ مع $u_n$. نضع $v_n = u_{n+1} - 5u_n$. فإن المتتالية $(v_n)$ تكون:",
-      "options": [{"text": "هندسية أساسها $q = 2$", "isCorrect": true}, {"text": "هندسية أساسها $q = 5$", "isCorrect": false}, {"text": "حسابية أساسها $r = 2$", "isCorrect": false}, {"text": "حسابية أساسها $r = 5$", "isCorrect": false}],
-      "solution": "$$v_{n+1} = u_{n+2} - 5u_{n+1} = (7u_{n+1} - 10u_n) - 5u_{n+1} = 2u_{n+1} - 10u_n = 2(u_{n+1} - 5u_n) = 2v_n$$<br>إذن $(v_n)$ هندسية أساسها $q = 2$."
-    },
-    {
-      "id": 24,
-      "question": "لتكن المتتالية المعرفة تدريجياً وفق $u_0 = 5$ و $u_{n+1} = 3u_n - 8$. إذا علمت أن المتتالية $v_n = u_n - 4$ هي متتالية هندسية عبارتها $v_n = 3^n$، فإن عبارة الحد العام $u_n$ بدلالة $n$ هي:",
-      "options": [{"text": "$u_n = 3^n + 4$", "isCorrect": true}, {"text": "$u_n = 3^n - 4$", "isCorrect": false}, {"text": "$u_n = 4 \\times 3^n$", "isCorrect": false}, {"text": "$u_n = 3^{n+1}$", "isCorrect": false}],
-      "solution": "بما أن $v_n = u_n - 4$، فإننا ننقل الثابت إلى الطرف الآخر:<br>$$u_n = v_n + 4$$<br>وبالتعويض عن $v_n = 3^n$ نجد مباشرة: $u_n = 3^n + 4$."
-    },
-    {
-      "id": 25,
-      "question": "إذا كان $u_{n+1} - 2u_n = 5^n$ و $u_{n+1} - 5u_n = 2^n$، فإن عبارة $u_n$ بدلالة $n$ هي:",
-      "options": [{"text": "$u_n = \\frac{5^n - 2^n}{3}$", "isCorrect": true}, {"text": "$u_n = 5^n - 2^n$", "isCorrect": false}, {"text": "$u_n = \\frac{5^n + 2^n}{3}$", "isCorrect": false}, {"text": "$u_n = 2 \\times 5^n - 2^n$", "isCorrect": false}],
-      "solution": "بطرح المعادلة الثانية من الأولى:<br>$$(u_{n+1} - 2u_n) - (u_{n+1} - 5u_n) = 5^n - 2^n \\implies 3u_n = 5^n - 2^n \\implies u_n = \\frac{5^n - 2^n}{3}$$"
-    },
-    {
-      "id": 26,
-      "question": "لتكن $(u_n)$ متتالية حسابية حدها $u_1 = \\frac{1}{2}$. نعرّف المتتالية $w_n = 3^{\\frac{1}{3}u_n}$. ما قيمة الجداء $P = w_0 \\cdot w_1 \\cdot w_2$؟",
-      "options": [{"text": "$\\sqrt{3}$", "isCorrect": true}, {"text": "3", "isCorrect": false}, {"text": "$3\\sqrt{3}$", "isCorrect": false}, {"text": "1", "isCorrect": false}],
-      "solution": "$$P = w_0 \\cdot w_1 \\cdot w_2 = 3^{\\frac{1}{3}(u_0 + u_1 + u_2)}$$<br>بما أن الحدود حسابية متعاقبة فإن $u_0 + u_1 + u_2 = 3u_1 = 3(\\frac{1}{2}) = \\frac{3}{2}$.<br>إذن الأس هو: $\\frac{1}{3} \\times \\frac{3}{2} = \\frac{1}{2}$.<br>وبالتالي $P = 3^{1/2} = \\sqrt{3}$."
-    },
-    {
-      "id": 27,
-      "question": "لتكن المتتالية $S_n = 1^3 + 2^3 + 3^3 + \\dots + n^3$. ما هي العبارة الصحيحة للمجموع $S_n$ بدلالة $n$ ($n \\ge 1$)؟",
-      "options": [{"text": "$S_n = \\frac{n^2(n+1)^2}{4}$", "isCorrect": true}, {"text": "$S_n = \\frac{n(n+1)^2}{2}$", "isCorrect": false}, {"text": "$S_n = \\frac{n^2(n+1)}{4}$", "isCorrect": false}, {"text": "$S_n = \\frac{n(n+1)}{2}$", "isCorrect": false}],
-      "solution": "بالتعويض والاستبعاد (طريقة الأتمتة):<br>عند $n=1$: $S_1 = 1^3 = 1$. بالتعويض في الخيار الأول: $\\frac{1 \\times 4}{4} = 1$.<br>عند $n=2$: $S_2 = 1 + 8 = 9$. بالتعويض: $\\frac{4 \\times 9}{4} = 9$.<br>عند $n=3$: $S_3 = 9 + 27 = 36$. بالتعويض: $\\frac{9 \\times 16}{4} = 36$.<br>إذن العبارة المطابقة هي $\\frac{n^2(n+1)^2}{4}$."
-    },
-    {
-      "id": 28,
-      "question": "المجموع $S_n = 1 \\times 2 + 2 \\times 3 + 3 \\times 4 + \\dots + n(n+1)$ أياً كان $n \\ge 1$ يساوي:",
-      "options": [{"text": "$\\frac{n(n+1)(n+2)}{3}$", "isCorrect": true}, {"text": "$\\frac{n(n+1)(2n+1)}{6}$", "isCorrect": false}, {"text": "$\\frac{n^2(n+1)}{2}$", "isCorrect": false}, {"text": "$\\frac{n(n+1)(n+2)}{6}$", "isCorrect": false}],
-      "solution": "بالتعويض عند $n=1$: الحد الأول $1 \\times 2 = 2$.<br>بالتعويض في الخيار الأول: $\\frac{1(2)(3)}{3} = 2$.<br>عند $n=2$: $S_2 = 2 + 2(3) = 8$. بالتعويض: $\\frac{2(3)(4)}{3} = 8$.<br>إذن العبارة الصحيحة هي $\\frac{n(n+1)(n+2)}{3}$."
-    },
-    {
-      "id": 29,
-      "question": "المتتالية المعرفة بـ $u_n = \\frac{n^2 + 1}{2n}$ أياً كان $n \\ge 1$ هي متتالية:",
-      "options": [{"text": "متزايدة تماماً", "isCorrect": true}, {"text": "متناقصة تماماً", "isCorrect": false}, {"text": "ثابتة", "isCorrect": false}, {"text": "غير مطردة", "isCorrect": false}],
-      "solution": "ندرس التابع المرفق $f(x) = \\frac{x^2+1}{2x} = \\frac{1}{2}x + \\frac{1}{2x}$ على $[1, +\\infty[$:<br>$$f'(x) = \\frac{1}{2} - \\frac{1}{2x^2} = \\frac{x^2 - 1}{2x^2} \\ge 0$$<br>المشتق موجب تماماً من أجل $x > 1$، وبالتالي المتتالية $(u_n)$ متزايدة تماماً."
-    },
-    {
-      "id": 30,
-      "question": "المتتالية المعرفة بـ $u_n = \\frac{2^{3n}}{3^{2n}}$ أياً كان $n \\ge 0$ هي متتالية:",
-      "options": [{"text": "متناقصة تماماً وهي هندسية", "isCorrect": true}, {"text": "متزايدة تماماً وهي هندسية", "isCorrect": false}, {"text": "حسابية متزايدة", "isCorrect": false}, {"text": "ثابتة", "isCorrect": false}],
-      "solution": "نكتب المتتالية بالشكل: $u_n = \\frac{(2^3)^n}{(3^2)^n} = \\frac{8^n}{9^n} = \\left(\\frac{8}{9}\\right)^n$.<br>بما أن الأساس $0 < q = \\frac{8}{9} < 1$ والحد الأول موجب، فالمتتالية هندسية متناقصة تماماً."
-    },
-    {
-      "id": 31,
-      "question": "المتتالية المعرفة بـ $u_n = \\frac{n+1}{2^n}$ أياً كان $n \\ge 0$ تكون:",
-      "options": [{"text": "متناقصة تماماً بدءاً من $n = 1$", "isCorrect": true}, {"text": "متزايدة تماماً دائماً", "isCorrect": false}, {"text": "ثابتة", "isCorrect": false}, {"text": "متزايدة فقط عند $n \\ge 2$", "isCorrect": false}],
-      "solution": "حدودها موجبة، ندرس النسبة $\\frac{u_{n+1}}{u_n}$:<br>$$\\frac{u_{n+1}}{u_n} = \\frac{n+2}{2^{n+1}} \\times \\frac{2^n}{n+1} = \\frac{n+2}{2(n+1)}$$<br>نقارن مع 1: $\\frac{n+2}{2n+2} < 1$ لأن $n+2 < 2n+2$ محققة دوماً أياً كان $n \\ge 1$.<br>إذن المتتالية متناقصة تماماً بدءاً من $n = 1$ (وحيث $u_0 = 1, u_1 = 1$)."
-    },
-    {
-      "id": 32,
-      "question": "المتتالية المعرفة تدريجياً بـ $u_{n+1} = u_n - 1$ مع $u_0 = 2$ هي متتالية:",
-      "options": [{"text": "حسابية متناقصة تماماً وأساسها $r = -1$", "isCorrect": true}, {"text": "حسابية متزايدة تماماً", "isCorrect": false}, {"text": "هندسية أساسها $-1$", "isCorrect": false}, {"text": "ثابتة", "isCorrect": false}],
-      "solution": "لدينا $u_{n+1} - u_n = -1 < 0$، والفرق ثابت، فهي حسابية أساسها $r = -1$ ومتناقصة تماماً."
-    },
-    {
-      "id": 33,
-      "question": "متتالية هندسية حدها الأول $u_0 = 1$ وأساسها $q = 2$. فإن قيمة المجموع $S = u_0 + u_2 + u_4 + \\dots + u_{10}$ تساوي:",
-      "options": [{"text": "1365", "isCorrect": true}, {"text": "2047", "isCorrect": false}, {"text": "1023", "isCorrect": false}, {"text": "4095", "isCorrect": false}],
-      "solution": "الحدود المختارة هي: $u_{2k} = u_0 \\cdot (q^2)^k = (4)^k$.<br>هذه متتالية هندسية جديدة أساسها $Q = q^2 = 4$، وحدها الأول $u_0 = 1$، وعدد حدودها من $k=0$ إلى $k=5$ هو 6 حدود.<br>$$S = 1 \\cdot \\frac{4^6 - 1}{4 - 1} = \\frac{4096 - 1}{3} = \\frac{4095}{3} = 1365$$"
-    },
-    {
-      "id": 34,
-      "question": "في إثبات المتراجحة $E(n): 2^n \\ge n + 1$ بالتدريج، فإن فرضية التدريج تعني:",
-      "options": [{"text": "نفرض صحة $2^n \\ge n + 1$", "isCorrect": true}, {"text": "نفرض صحة $2^{n+1} \\ge n + 2$", "isCorrect": false}, {"text": "نثبت صحة $2^0 \\ge 1$", "isCorrect": false}, {"text": "نحسب $2^n - (n+1) = 0$", "isCorrect": false}],
-      "solution": "فرضية التدريج هي افتراض صحة القضية $E(n)$ عند العدد الطبيعي $n$، أي افتراض $2^n \\ge n + 1$."
-    },
-    {
-      "id": 35,
-      "question": "لإثبات صحة $E(n+1): 2^{n+1} \\ge n + 2$ انطلاقاً من الفرض $2^n \\ge n+1$، الخطوة الصحيحة هي:",
-      "options": [{"text": "ضرب طرفي الفرض بالعدد 2", "isCorrect": true}, {"text": "إضافة 1 لطرفي الفرض", "isCorrect": false}, {"text": "تربيع طرفي الفرض", "isCorrect": false}, {"text": "قسمة الفرض على 2", "isCorrect": false}],
-      "solution": "بما أن الطرف الأيسر المطلوب هو $2^{n+1} = 2 \\times 2^n$، فنضرب الفرض بالعدد 2:<br>$$2 \\times 2^n \\ge 2(n + 1) = 2n + 2 = (n + 2) + n \\ge n + 2$$<br>فتثبت صحة القضية من أجل $n+1$."
-    },
-    {
-      "id": 36,
-      "question": "إذا كانت الأعداد $3 ,\\; x ,\\; 19$ تشكل حدوداً متعاقبة لمتتالية حسابية، فإن قيمة $x$ هي:",
-      "options": [{"text": "11", "isCorrect": true}, {"text": "10", "isCorrect": false}, {"text": "12", "isCorrect": false}, {"text": "14", "isCorrect": false}],
-      "solution": "الحد الأوسط في المتتالية الحسابية: $x = \\frac{3 + 19}{2} = \\frac{22}{2} = 11$."
-    },
-    {
-      "id": 37,
-      "question": "إذا كانت الأعداد الموجبة $2 ,\\; y ,\\; 18$ تشكل حدوداً متعاقبة لمتتالية هندسية، فإن قيمة $y$ هي:",
-      "options": [{"text": "6", "isCorrect": true}, {"text": "9", "isCorrect": false}, {"text": "10", "isCorrect": false}, {"text": "4", "isCorrect": false}],
-      "solution": "الحد الأوسط في المتتالية الهندسية: $y^2 = 2 \\times 18 = 36 \\implies y = 6$ (لأن الحدود موجبة)."
-    },
-    {
-      "id": 38,
-      "question": "المتتالية المعرفة بـ $u_n = \\frac{3n + 1}{n + 2}$ أياً كان $n \\ge 0$ هي متتالية:",
-      "options": [{"text": "محدودة من الأعلى بالعدد 3 ومحدودة من الأدنى بـ $\\frac{1}{2}$", "isCorrect": true}, {"text": "غير محدودة من الأعلى", "isCorrect": false}, {"text": "متناقصة تماماً", "isCorrect": false}, {"text": "حدودها سالبة", "isCorrect": false}],
-      "solution": "ندرس التابع المرفق $f(x) = \\frac{3x+1}{x+2}$ وهو متزايد تماماً لأن مشتقته $f'(x) = \\frac{5}{(x+2)^2} > 0$.<br>أصغر قيمة هي $u_0 = \\frac{1}{2}$. ونهايتها عند $+\\infty$ هي 3، فجميع حدودها تحقق $\\frac{1}{2} \\le u_n < 3$."
-    },
-    {
-      "id": 39,
-      "question": "المتتالية $u_n = 4 - \\sin(n)$ أياً كان $n \\ge 0$ هي متتالية:",
-      "options": [{"text": "محدودة وتحقق $3 \\le u_n \\le 5$", "isCorrect": true}, {"text": "محدودة وتحقق $-1 \\le u_n \\le 1$", "isCorrect": false}, {"text": "غير محدودة", "isCorrect": false}, {"text": "متزايدة تماماً", "isCorrect": false}],
-      "solution": "نعلم أن $-1 \\le \\sin(n) \\le 1 \\implies -1 \\le -\\sin(n) \\le 1$.<br>بإضافة 4 للأطراف: $3 \\le 4 - \\sin(n) \\le 5$."
-    },
-    {
-      "id": 40,
-      "question": "قيمة المجموع $S = 1 + 3 + 5 + \\dots + 39$ تساوي:",
-      "options": [{"text": "400", "isCorrect": true}, {"text": "380", "isCorrect": false}, {"text": "420", "isCorrect": false}, {"text": "361", "isCorrect": false}],
-      "solution": "المجموع لأعداد فردية متتالية. الحد الأخير $2n - 1 = 39 \\implies 2n = 40 \\implies n = 20$ حداً.<br>قانون مجموع أول $n$ عدداً فردياً هو $S = n^2 = 20^2 = 400$."
-    },
-    {
-      "id": 41,
-      "question": "قيمة المجموع $S = 2 + 4 + 6 + \\dots + 40$ تساوي:",
-      "options": [{"text": "420", "isCorrect": true}, {"text": "400", "isCorrect": false}, {"text": "440", "isCorrect": false}, {"text": "210", "isCorrect": false}],
-      "solution": "الحد الأخير $2n = 40 \\implies n = 20$ حداً.<br>قانون مجموع أول $n$ عدداً زوجياً هو $S = n(n+1) = 20 \\times 21 = 420$."
-    },
-    {
-      "id": 42,
-      "question": "مجموع مضاعفات العدد 3 المحصورة بين 1 و 100 هو المجموع $S = 3 + 6 + 9 + \\dots + 99$. قيمته هي:",
-      "options": [{"text": "1683", "isCorrect": true}, {"text": "1650", "isCorrect": false}, {"text": "1716", "isCorrect": false}, {"text": "3366", "isCorrect": false}],
-      "solution": "الحدود: $u_k = 3k$ حيث $k$ من 1 إلى 33 (أي 33 حداً).<br>$$S = \\frac{33}{2}(3 + 99) = \\frac{33}{2}(102) = 33 \\times 51 = 1683$$"
-    },
-    {
-      "id": 43,
-      "question": "في متتالية حسابية إذا كان $u_5 = 17$ و $u_9 = 29$، فإن عبارة $u_n$ بدلالة $n$ هي:",
-      "options": [{"text": "$u_n = 3n + 2$", "isCorrect": true}, {"text": "$u_n = 3n - 1$", "isCorrect": false}, {"text": "$u_n = 2n + 7$", "isCorrect": false}, {"text": "$u_n = 4n - 3$", "isCorrect": false}],
-      "solution": "$$u_9 - u_5 = 4r \\implies 29 - 17 = 12 \\implies 4r = 12 \\implies r = 3$$<br>لدينا $u_5 = u_0 + 5r \\implies 17 = u_0 + 15 \\implies u_0 = 2$.<br>إذن $u_n = 2 + 3n$."
-    },
-    {
-      "id": 44,
-      "question": "متتالية هندسية حدها الأول $u_0 = 3$ وأساسها $q = -2$. قيمة الحد $u_5$ هي:",
-      "options": [{"text": "-96", "isCorrect": true}, {"text": "96", "isCorrect": false}, {"text": "-48", "isCorrect": false}, {"text": "48", "isCorrect": false}],
-      "solution": "$$u_5 = u_0 \\cdot q^5 = 3 \\times (-2)^5 = 3 \\times (-32) = -96$$"
-    },
-    {
-      "id": 45,
-      "question": "لتكن المتتالية $u_n = n^2 - 6n + 5$. المتتالية تكون متزايدة تماماً بدءاً من الدليل:",
-      "options": [{"text": "$n = 3$", "isCorrect": true}, {"text": "$n = 0$", "isCorrect": false}, {"text": "$n = 1$", "isCorrect": false}, {"text": "$n = 6$", "isCorrect": false}],
-      "solution": "نحسب الفرق $u_{n+1} - u_n$:<br>$$u_{n+1} - u_n = [(n+1)^2 - 6(n+1) + 5] - [n^2 - 6n + 5] = 2n - 5$$<br>يكون $u_{n+1} - u_n > 0 \\iff 2n - 5 > 0 \\iff n > 2.5$.<br>وبالتالي تكون متزايدة تماماً بدءاً من أول عدد طبيعي يليها وهو $n = 3$."
-    },
-    {
-      "id": 46,
-      "question": "المتتالية $u_n = \\sqrt{n+1} - \\sqrt{n}$ أياً كان $n \\ge 1$ هي متتالية:",
-      "options": [{"text": "متناقصة تماماً وموجبة", "isCorrect": true}, {"text": "متزايدة تماماً", "isCorrect": false}, {"text": "ثابتة", "isCorrect": false}, {"text": "غير مطردة", "isCorrect": false}],
-      "solution": "بالضرب والقسمة على المرافق:<br>$$u_n = \\frac{(\\sqrt{n+1} - \\sqrt{n})(\\sqrt{n+1} + \\sqrt{n})}{\\sqrt{n+1} + \\sqrt{n}} = \\frac{1}{\\sqrt{n+1} + \\sqrt{n}}$$<br>مع تزايد $n$، يكبر المقام وتصغر قيمة الكسر، فالمتتالية متناقصة تماماً."
-    },
-    {
-      "id": 47,
-      "question": "المتتالية المعرفة بـ $u_n = \\frac{2^n}{n!}$ أياً كان $n \\ge 1$ تكون متناقصة تماماً بدءاً من:",
-      "options": [{"text": "$n = 2$", "isCorrect": true}, {"text": "$n = 1$", "isCorrect": false}, {"text": "$n = 3$", "isCorrect": false}, {"text": "$n = 4$", "isCorrect": false}],
-      "solution": "$$\\frac{u_{n+1}}{u_n} = \\frac{2^{n+1}}{(n+1)!} \\times \\frac{n!}{2^n} = \\frac{2}{n+1}$$<br>يكون $\\frac{2}{n+1} < 1 \\iff n+1 > 2 \\iff n > 1$.<br>إذن بدءاً من $n = 2$ تكون النسبة أصغر من 1 والمتتالية متناقصة تماماً."
-    },
-    {
-      "id": 48,
-      "question": "متراجحة برنولي الشهيرة تنص على أنه أياً كان $x > -1$ والعدد الطبيعي $n \\ge 0$ فإن:",
-      "options": [{"text": "$(1+x)^n \\ge 1 + nx$", "isCorrect": true}, {"text": "$(1+x)^n \\le 1 + nx$", "isCorrect": false}, {"text": "$(1+x)^n \\ge 1 + x^n$", "isCorrect": false}, {"text": "$(1+x)^n = 1 + nx$", "isCorrect": false}],
-      "solution": "متراجحة برنولي الأساسية المثبتة بالتدريج في المنهاج السوري تنص على أن $(1+x)^n \\ge 1 + nx$ أياً كان $x > -1$ و $n \\in \\mathbb{N}$."
-    },
-    {
-      "id": 49,
-      "question": "المتتالية $(u_n)$ تحقق العلاقة $u_{n+2} - 6u_{n+1} + 8u_n = 0$. جذور المعادلة المميزة لهذه العلاقة هما:",
-      "options": [{"text": "$r_1 = 2 ,\\; r_2 = 4$", "isCorrect": true}, {"text": "$r_1 = 1 ,\\; r_2 = 8$", "isCorrect": false}, {"text": "$r_1 = -2 ,\\; r_2 = -4$", "isCorrect": false}, {"text": "$r_1 = 3 ,\\; r_2 = 5$", "isCorrect": false}],
-      "solution": "المعادلة المميزة هي: $r^2 - 6r + 8 = 0$.<br>بالتحليل المباشر: $(r - 2)(r - 4) = 0 \\implies r_1 = 2 ,\\; r_2 = 4$."
-    },
-    {
-      "id": 50,
-      "question": "إذا كانت المتتالية $(u_n)$ تحقق $u_{n+2} - 6u_{n+1} + 8u_n = 0$ مع $u_0 = 3$ و $u_1 = 8$، وكانت المعادلة المميزة تقبل الجذرين $r_1 = 2$ و $r_2 = 4$، فإن عبارة $u_n$ بدلالة $n$ هي:",
-      "options": [{"text": "$u_n = 2^{n+1} + 4^n$", "isCorrect": true}, {"text": "$u_n = 2 \\cdot 2^n + 4^n$", "isCorrect": false}, {"text": "$u_n = 3 \\cdot 2^n$", "isCorrect": false}, {"text": "$u_n = 2^n + 2 \\cdot 4^n$", "isCorrect": false}],
-      "solution": "الشكل العام للحل هو: $u_n = A \\cdot 2^n + B \\cdot 4^n$.<br>• عند $n=0$: $A + B = 3$<br>• عند $n=1$: $2A + 4B = 8 \\implies A + 2B = 4$<br>بطرح المعادلتين: $B = 1$، ومنه $A = 2$.<br>إذن: $u_n = 2 \\cdot 2^n + 4^n = 2^{n+1} + 4^n$."
-    },
-    {
-      "id": 51,
-      "question": "إذا كانت $(u_n)$ متزايدة تماماً و $(v_n)$ متناقصة تماماً وكان $u_n < v_n$ أياً كان $n$، فإن:",
-      "options": [{"text": "جميع حدود $u_n$ أصغر من جميع حدود $v_n$", "isCorrect": true}, {"text": "$u_0$ هو أكبر حد في $(u_n)$", "isCorrect": false}, {"text": "$v_0$ هو أصغر حد في $(v_n)$", "isCorrect": false}, {"text": "المتتاليتان متباعدتان", "isCorrect": false}],
-      "solution": "وفق خواص المتتاليات المتجاورة: بما أن $(u_n)$ متزايدة و $(v_n)$ متناقصة، فإن أي حد من المتتالية الأولى أصغر من أي حد من المتتالية الثانية ($u_n \\le v_m$ أياً كان $n, m$)."
-    },
-    {
-      "id": 52,
-      "question": "في المتتالية الهندسية $(u_n)$ التي حدها الأول $u_0 \\ne 0$ وأساسها $q$，إذا كان $q = 1$ فإن المتتالية تكون:",
-      "options": [{"text": "متتالية ثابتة", "isCorrect": true}, {"text": "متتالية متزايدة تماماً", "isCorrect": false}, {"text": "متتالية متناقصة تماماً", "isCorrect": false}, {"text": "متتالية متناوبة الإشارة", "isCorrect": false}],
-      "solution": "إذا كان الأساس $q = 1$ فإن $u_{n+1} = 1 \\cdot u_n = u_n$، فتكون جميع الحدود مساوية للحد الأول $u_0$، أي متتالية ثابتة."
-    },
-    {
-      "id": 53,
-      "question": "إذا كان أساس المتتالية الهندسية $q = -1$ وكان $u_0 = 5$، فإن المتتالية تكون:",
-      "options": [{"text": "متناوبة وتأخذ القيمتين 5 و -5 بالتناوب", "isCorrect": true}, {"text": "متزايدة تماماً", "isCorrect": false}, {"text": "متناقصة تماماً", "isCorrect": false}, {"text": "ثابتة", "isCorrect": false}],
-      "solution": "الحد العام $u_n = 5(-1)^n$.<br>فالحدود الزوجية تساوي 5، والفردية تساوي -5، فهي متتالية متناوبة الإشارة."
-    },
-    {
-      "id": 54,
-      "question": "تكون المتتالية الحسابية $(u_n)$ متتالية ثابتة إذا وفقط إذا كان أساسها $r$ يساوي:",
-      "options": [{"text": "$r = 0$", "isCorrect": true}, {"text": "$r = 1$", "isCorrect": false}, {"text": "$r = -1$", "isCorrect": false}, {"text": "$r > 0$", "isCorrect": false}],
-      "solution": "في المتتالية الحسابية $u_{n+1} - u_n = r$. تكون الحدود متساوية وثابتة إذا وفقط إذا كان الفرق معدوماً أي $r = 0$."
-    },
-    {
-      "id": 55,
-      "question": "المجموع $S_n = 1 + 2 + 3 + \\dots + (n-1)$ أياً كان $n \\ge 2$ يساوي:",
-      "options": [{"text": "$\\frac{n(n-1)}{2}$", "isCorrect": true}, {"text": "$\\frac{n(n+1)}{2}$", "isCorrect": false}, {"text": "$\\frac{(n-1)(n-2)}{2}$", "isCorrect": false}, {"text": "$n(n-1)$", "isCorrect": false}],
-      "solution": "متتالية حسابية عدد حدودها $n-1$ وحدها الأول 1 والأخير $n-1$:<br>$$S_n = \\frac{n-1}{2}(1 + n - 1) = \\frac{n(n-1)}{2}$$"
-    },
-    {
-      "id": 56,
-      "question": "في المتتالية $(u_n)$، عدد حدود المجموع $S = u_k + u_{k+1} + \\dots + u_m$ (حيث $m \\ge k$) هو دوماً:",
-      "options": [{"text": "$m - k + 1$", "isCorrect": true}, {"text": "$m - k$", "isCorrect": false}, {"text": "$m - k - 1$", "isCorrect": false}, {"text": "$m + k + 1$", "isCorrect": false}],
-      "solution": "القاعدة العامة لعدد الحدود في متتالية متعاقبة هي: دليل الحد الأخير مطروحاً منه دليل الحد الأول مضافاً إليه واحد: $m - k + 1$."
-    },
-    {
-      "id": 57,
-      "question": "إذا كانت الأعداد $a, b, c$ في ترتيب حسابي متعاقب، فإن العلاقة التي تربط بينها هي:",
-      "options": [{"text": "$2b = a + c$", "isCorrect": true}, {"text": "$b^2 = ac$", "isCorrect": false}, {"text": "$b = a + c$", "isCorrect": false}, {"text": "$a + b + c = 0$", "isCorrect": false}],
-      "solution": "الوسط الحسابي يحقق: $b - a = c - b \\implies 2b = a + c$."
-    },
-    {
-      "id": 58,
-      "question": "إذا كانت الأعداد $a, b, c$ في ترتيب هندسي متعاقب، فإن العلاقة التي تربط بينها هي:",
-      "options": [{"text": "$b^2 = a \\cdot c$", "isCorrect": true}, {"text": "$2b = a + c$", "isCorrect": false}, {"text": "$b = a \\cdot c$", "isCorrect": false}, {"text": "$b^2 = a + c$", "isCorrect": false}],
-      "solution": "الوسط الهندسي يحقق: $\\frac{b}{a} = \\frac{c}{b} \\implies b^2 = ac$."
-    },
-    {
-      "id": 59,
-      "question": "في البرهان بالتدريج، تسمى الخطوة التي نتحقق فيها من صحة القضية لأصغر عدد طبيعي معطى بـ:",
-      "options": [{"text": "مرحلة الابتداء (صحة البداية)", "isCorrect": true}, {"text": "فرضية التدريج", "isCorrect": false}, {"text": "مبرهنة الإحاطة", "isCorrect": false}, {"text": "الاستنتاج التحليلي", "isCorrect": false}],
-      "solution": "الخطوة الأولى في البرهان بالتدريج هي التحقق من صحة القضية عند القيمة الابتدائية $n_0$ وتسمى مرحلة الابتداء (Base step)."
-    },
-    {
-      "id": 60,
-      "question": "إذا كانت $(u_n)$ متتالية موجبة تماماً ومتزايدة تماماً، فإن المتتالية $v_n = \\frac{1}{u_n}$ تكون حتماً:",
-      "options": [{"text": "متناقصة تماماً وموجبة تماماً", "isCorrect": true}, {"text": "متزايدة تماماً", "isCorrect": false}, {"text": "ثابتة", "isCorrect": false}, {"text": "سالبة تماماً", "isCorrect": false}],
-      "solution": "بما أن $u_{n+1} > u_n > 0$، فبقلب الطرفين تنعكس إشارة التراجع فينتج $\\frac{1}{u_{n+1}} < \\frac{1}{u_n}$، أي $v_{n+1} < v_n$، فالمتتالية $(v_n)$ متناقصة تماماً وموجبة."
-    }
-  ];
+  {
+    "id": 1,
+    "question": "لتكن المتتالية $(u_n)_{n \\ge 0}$ المعرفة تدريجياً: $u_{n+1} = \\frac{3}{4}u_n + a$ مع $u_0 = 8$. ما قيمة $a$ التي تجعل المتتالية $(u_n)$ ثابتة؟",
+    "options": [
+      {"text": "$a = -2$", "isCorrect": false},
+      {"text": "$a = 4$", "isCorrect": false},
+      {"text": "$a = 2$", "isCorrect": true},
+      {"text": "$a = 8$", "isCorrect": false}
+    ],
+    "solution": "المتتالية ثابتة تعني $u_{n+1} = u_n = u_0 = 8$.<br>بالتعويض في العلاقة التدريجية: $8 = \\frac{3}{4}(8) + a \\implies 8 = 6 + a \\implies a = 2$."
+  },
+  {
+    "id": 2,
+    "question": "المقدار $2^{3n} - 1$ أياً كان العدد الطبيعي $n \\ge 1$ يقبل القسمة دوماً على العدد الطبيعي:",
+    "options": [
+      {"text": "2", "isCorrect": false},
+      {"text": "7", "isCorrect": true},
+      {"text": "5", "isCorrect": false},
+      {"text": "3", "isCorrect": false}
+    ],
+    "solution": "$$2^{3n} - 1 = (2^3)^n - 1^n = 8^n - 1^n = (8 - 1)(8^{n-1} + \\dots + 1) = 7 \\times M$$<br>وبالتالي المقدار مضاعف دوماً للعدد 7."
+  },
+  {
+    "id": 3,
+    "question": "المقدار $3^{2n} - 2^n$ أياً كان العدد الطبيعي $n \\ge 1$ هو دوماً مضاعف للعدد الطبيعي:",
+    "options": [
+      {"text": "7", "isCorrect": true},
+      {"text": "9", "isCorrect": false},
+      {"text": "5", "isCorrect": false},
+      {"text": "4", "isCorrect": false}
+    ],
+    "solution": "$$3^{2n} - 2^n = (3^2)^n - 2^n = 9^n - 2^n = (9 - 2) \\times M = 7 \\times M$$<br>إذن المقدار مضاعف دوماً للعدد 7."
+  },
+  {
+    "id": 4,
+    "question": "المقدار $3^{30} - 2^{10}$ يقبل القسمة على العدد الطبيعي:",
+    "options": [
+      {"text": "75", "isCorrect": false},
+      {"text": "125", "isCorrect": false},
+      {"text": "25", "isCorrect": true},
+      {"text": "15", "isCorrect": false}
+    ],
+    "solution": "$$3^{30} - 2^{10} = (3^3)^{10} - 2^{10} = 27^{10} - 2^{10} = (27 - 2) \\times M = 25 \\times M$$<br>وبالتالي هو مضاعف للعدد 25."
+  },
+  {
+    "id": 5,
+    "question": "المقدار $5^{3n} - 7^{2n}$ أياً كان العدد الطبيعي $n \\ge 1$ يقبل القسمة دوماً على:",
+    "options": [
+      {"text": "76", "isCorrect": true},
+      {"text": "55", "isCorrect": false},
+      {"text": "30", "isCorrect": false},
+      {"text": "81", "isCorrect": false}
+    ],
+    "solution": "$$5^{3n} - 7^{2n} = (5^3)^n - (7^2)^n = 125^n - 49^n = (125 - 49) \\times M = 76 \\times M$$<br>إذن المقدار مضاعف للعدد 76."
+  },
+  {
+    "id": 6,
+    "question": "المقدار $2^{3n} - 3^n$ أياً كان العدد الطبيعي $n \\ge 1$ هو دوماً مضاعف للعدد:",
+    "options": [
+      {"text": "3", "isCorrect": false},
+      {"text": "5", "isCorrect": true},
+      {"text": "7", "isCorrect": false},
+      {"text": "2", "isCorrect": false}
+    ],
+    "solution": "$$2^{3n} - 3^n = 8^n - 3^n = (8 - 3) \\times M = 5 \\times M$$<br>إذن يقبل القسمة على 5."
+  },
+  {
+    "id": 7,
+    "question": "المقدار $4^n - 1$ أياً كان العدد الطبيعي $n \\ge 1$ يقبل القسمة على:",
+    "options": [
+      {"text": "5", "isCorrect": false},
+      {"text": "2", "isCorrect": false},
+      {"text": "4", "isCorrect": false},
+      {"text": "3", "isCorrect": true}
+    ],
+    "solution": "$$4^n - 1 = (4 - 1)(4^{n-1} + \\dots + 1) = 3 \\times M$$<br>إذن المقدار مضاعف للعدد 3."
+  },
+  {
+    "id": 8,
+    "question": "المقدار $6^n - 1$ أياً كان العدد الطبيعي $n \\ge 1$ هو دوماً مضاعف للعدد:",
+    "options": [
+      {"text": "6", "isCorrect": false},
+      {"text": "5", "isCorrect": true},
+      {"text": "7", "isCorrect": false},
+      {"text": "4", "isCorrect": false}
+    ],
+    "solution": "$$6^n - 1 = (6 - 1) \\times M = 5 \\times M$$<br>يقبل القسمة على 5."
+  },
+  {
+    "id": 9,
+    "question": "ما هو أصغر عدد طبيعي $n$ يحقق المتراجحة: $3^n \\ge 2^n + 5n^2$؟",
+    "options": [
+      {"text": "$n = 4$", "isCorrect": false},
+      {"text": "$n = 3$", "isCorrect": false},
+      {"text": "$n = 5$", "isCorrect": true},
+      {"text": "$n = 2$", "isCorrect": false}
+    ],
+    "solution": "بالتعويض تصاعدياً:<br>• $n=1: 3 \\ge 7$ (خاطئة).<br>• $n=2: 9 \\ge 24$ (خاطئة).<br>• $n=3: 27 \\ge 53$ (خاطئة).<br>• $n=4: 81 \\ge 96$ (خاطئة).<br>• $n=5: 243 \\ge 32 + 125 = 157$ (صحيحة).<br>إذن أصغر عدد طبيعي هو $n = 5$."
+  },
+  {
+    "id": 10,
+    "question": "ما هو أصغر عدد طبيعي $n$ يحقق المتراجحة: $3^n \\ge (n+2)^2$؟",
+    "options": [
+      {"text": "$n = 2$", "isCorrect": false},
+      {"text": "$n = 3$", "isCorrect": true},
+      {"text": "$n = 1$", "isCorrect": false},
+      {"text": "$n = 4$", "isCorrect": false}
+    ],
+    "solution": "• عند $n=1: 3 \\ge 9$ (خاطئة).<br>• عند $n=2: 9 \\ge 16$ (خاطئة).<br>• عند $n=3: 27 \\ge 25$ (صحيحة).<br>إذن أصغر عدد طبيعي هو $n = 3$."
+  },
+  {
+    "id": 11,
+    "question": "ما هو أصغر عدد طبيعي $n$ يحقق المتراجحة: $2^n \\ge 2n + 1$؟",
+    "options": [
+      {"text": "$n = 2$", "isCorrect": false},
+      {"text": "$n = 0$", "isCorrect": false},
+      {"text": "$n = 1$", "isCorrect": false},
+      {"text": "$n = 3$", "isCorrect": true}
+    ],
+    "solution": "• عند $n=0: 1 \\ge 1$ (مساواة).<br>• عند $n=1: 2 \\ge 3$ (خاطئة).<br>• عند $n=2: 4 \\ge 5$ (خاطئة).<br>• عند $n=3: 8 \\ge 7$ (صحيحة وتستمر صحيحة قطيعاً لجميع $n \\ge 3$).<br>إذن تبدأ المتراجحة بالتحقق التام بدءاً من $n = 3$."
+  },
+  {
+    "id": 12,
+    "question": "ما هو أصغر عدد طبيعي $n$ يحقق المتراجحة: $2^n \\ge n^2$ للقيم الأكبر من 2؟",
+    "options": [
+      {"text": "$n = 4$", "isCorrect": true},
+      {"text": "$n = 5$", "isCorrect": false},
+      {"text": "$n = 3$", "isCorrect": false},
+      {"text": "$n = 6$", "isCorrect": false}
+    ],
+    "solution": "• عند $n=3: 8 \\ge 9$ (خاطئة).<br>• عند $n=4: 16 \\ge 16$ (محققة مساواة).<br>• عند $n=5: 32 \\ge 25$ (صحيحة).<br>إذن أصغر عدد طبيعي هو $n = 4$."
+  },
+  {
+    "id": 13,
+    "question": "لتكن المتتالية المعرفة بـ: $u_{n+1} = \\frac{1}{2}\\left(u_n + \\frac{2}{u_n}\\right)$ مع $u_n > 0$. نعرّف $v_n = \\frac{u_n - \\sqrt{2}}{u_n + \\sqrt{2}}$. فإن المتتالية $(v_n)$ تحقق:",
+    "options": [
+      {"text": "$v_{n+1} = 2v_n$", "isCorrect": false},
+      {"text": "$v_{n+1} = \\sqrt{v_n}$", "isCorrect": false},
+      {"text": "$v_{n+1} = v_n^2$", "isCorrect": true},
+      {"text": "$v_{n+1} = \\frac{1}{2}v_n$", "isCorrect": false}
+    ],
+    "solution": "نعوض $u_{n+1} = \\frac{u_n^2 + 2}{2u_n}$ في عبارة $v_{n+1}$:<br>$$v_{n+1} = \\frac{\\frac{u_n^2+2}{2u_n} - \\sqrt{2}}{\\frac{u_n^2+2}{2u_n} + \\sqrt{2}} = \\frac{u_n^2 - 2\\sqrt{2}u_n + 2}{u_n^2 + 2\\sqrt{2}u_n + 2} = \\left(\\frac{u_n - \\sqrt{2}}{u_n + \\sqrt{2}}\\right)^2 = v_n^2$$"
+  },
+  {
+    "id": 14,
+    "question": "لتكن المتتالية المعرفة بـ: $u_{n+1} = \\frac{1}{2}\\left(u_n + \\frac{3}{u_n}\\right)$ مع $u_n > 0$. نعرّف $v_n = \\frac{u_n - \\sqrt{3}}{u_n + \\sqrt{3}}$. فإن المتتالية $(v_n)$ تحقق:",
+    "options": [
+      {"text": "$v_{n+1} = 3v_n$", "isCorrect": false},
+      {"text": "$v_{n+1} = v_n^2$", "isCorrect": true},
+      {"text": "$v_{n+1} = \\sqrt{3}v_n$", "isCorrect": false},
+      {"text": "$v_{n+1} = v_n + 3$", "isCorrect": false}
+    ],
+    "solution": "بتوحيد المقامات والتعويض المباشر:<br>$$v_{n+1} = \\frac{u_n^2 - 2\\sqrt{3}u_n + 3}{u_n^2 + 2\\sqrt{3}u_n + 3} = \\left(\\frac{u_n - \\sqrt{3}}{u_n + \\sqrt{3}}\\right)^2 = v_n^2$$"
+  },
+  {
+    "id": 15,
+    "question": "لتكن المتتالية $(u_n)$ حيث $u_{n+1} = 4u_n + 3$ مع $u_n \\ge 0$. نضع $v_n = \\sqrt{u_n + 1}$. فإن طبيعة المتتالية $(v_n)$ هي:",
+    "options": [
+      {"text": "متتالية هندسية أساسها $q = 4$", "isCorrect": false},
+      {"text": "متتالية حسابية أساسها $r = 2$", "isCorrect": false},
+      {"text": "متتالية ثابتة", "isCorrect": false},
+      {"text": "متتالية هندسية أساسها $q = 2$", "isCorrect": true}
+    ],
+    "solution": "$$v_{n+1} = \\sqrt{u_{n+1} + 1} = \\sqrt{4u_n + 3 + 1} = \\sqrt{4(u_n + 1)} = 2\\sqrt{u_n + 1} = 2v_n$$<br>فالمتتالية هندسية أساسها $q = 2$."
+  },
+  {
+    "id": 16,
+    "question": "لتكن المتتالية $(u_n)$ حيث $u_{n+1} = 9u_n + 8$ مع $u_n \\ge 0$. نضع $v_n = \\sqrt{u_n + 1}$. فإن طبيعة المتتالية $(v_n)$ هي:",
+    "options": [
+      {"text": "متتالية حسابية أساسها $r = 3$", "isCorrect": false},
+      {"text": "متتالية هندسية أساسها $q = 3$", "isCorrect": true},
+      {"text": "متتالية هندسية أساسها $q = 9$", "isCorrect": false},
+      {"text": "متتالية ثابتة", "isCorrect": false}
+    ],
+    "solution": "$$v_{n+1} = \\sqrt{u_{n+1} + 1} = \\sqrt{9u_n + 8 + 1} = \\sqrt{9(u_n + 1)} = 3\\sqrt{u_n + 1} = 3v_n$$<br>فالمتتالية هندسية أساسها $q = 3$."
+  },
+  {
+    "id": 17,
+    "question": "متتالية معرفة تدريجياً: $u_{n+1} = \\frac{9}{6 - u_n}$ مع $u_n \\ne 3$. نضع $v_n = \\frac{1}{u_n - 3}$. فإن المتتالية $(v_n)$ تكون:",
+    "options": [
+      {"text": "متتالية حسابية أساسها $r = -\\frac{1}{3}$", "isCorrect": true},
+      {"text": "متتالية حسابية أساسها $r = 3$", "isCorrect": false},
+      {"text": "متتالية هندسية أساسها $q = 3$", "isCorrect": false},
+      {"text": "ليست حسابية ولا هندسية", "isCorrect": false}
+    ],
+    "solution": "$$v_{n+1} - v_n = \\frac{6 - u_n}{3(u_n - 3)} - \\frac{3}{3(u_n - 3)} = \\frac{-(u_n - 3)}{3(u_n - 3)} = -\\frac{1}{3}$$<br>الفرق ثابت، فالمتتالية حسابية أساسها $r = -\\frac{1}{3}$."
+  },
+  {
+    "id": 18,
+    "question": "متتالية معرفة تدريجياً: $u_{n+1} = \\frac{16}{8 - u_n}$ مع $u_n \\ne 4$. نضع $v_n = \\frac{1}{u_n - 4}$. فإن المتتالية $(v_n)$ تكون:",
+    "options": [
+      {"text": "متتالية هندسية أساسها $q = -\\frac{1}{4}$", "isCorrect": false},
+      {"text": "متتالية حسابية أساسها $r = -\\frac{1}{4}$", "isCorrect": true},
+      {"text": "متتالية حسابية أساسها $r = 4$", "isCorrect": false},
+      {"text": "ليست حسابية ولا هندسية", "isCorrect": false}
+    ],
+    "solution": "$$v_{n+1} - v_n = \\frac{8 - u_n}{4(u_n - 4)} - \\frac{4}{4(u_n - 4)} = \\frac{-(u_n - 4)}{4(u_n - 4)} = -\\frac{1}{4}$$<br>الفرق ثابت، فالمتتالية حسابية أساسها $r = -\\frac{1}{4}$."
+  },
+  {
+    "id": 19,
+    "question": "متتالية معرفة تدريجياً بـ $u_{n+1} = \\frac{u_n}{2 + u_n}$ مع $u_n > 0$. نعرّف $v_n = \\frac{1}{u_n}$. فإن المتتالية $(v_n)$ تكون:",
+    "options": [
+      {"text": "حسابية أساسها $r = 1$", "isCorrect": false},
+      {"text": "ثابتة", "isCorrect": false},
+      {"text": "ليست حسابية لأن الفرق $v_{n+1} - v_n$ غير ثابت", "isCorrect": true},
+      {"text": "هندسية أساسها $q = 2$", "isCorrect": false}
+    ],
+    "solution": "$$v_{n+1} = \\frac{1}{u_{n+1}} = \\frac{2 + u_n}{u_n} = \\frac{2}{u_n} + 1 = 2v_n + 1$$<br>الفرق $v_{n+1} - v_n = v_n + 1$ يعتمد على $n$، إذن ليست متتالية حسابية."
+  },
+  {
+    "id": 20,
+    "question": "متتالية معرفة بـ $u_{n+1} = \\frac{u_n}{1 + 4u_n}$ مع $u_n > 0$. نضع $v_n = \\frac{1}{u_n}$. فإن المتتالية $(v_n)$ هي:",
+    "options": [
+      {"text": "حسابية أساسها $r = 4$", "isCorrect": true},
+      {"text": "هندسية أساسها $q = 4$", "isCorrect": false},
+      {"text": "حسابية أساسها $r = 1$", "isCorrect": false},
+      {"text": "ثابتة", "isCorrect": false}
+    ],
+    "solution": "$$v_{n+1} = \\frac{1 + 4u_n}{u_n} = \\frac{1}{u_n} + 4 = v_n + 4 \\implies v_{n+1} - v_n = 4$$<br>فالمتتالية حسابية أساسها $r = 4$."
+  },
+  {
+    "id": 21,
+    "question": "متتاليتان $(u_n)$ و $(v_n)$ تحققان: $u_{n+1} = \\frac{u_n + v_n}{2}$ و $v_{n+1} = \\frac{u_{n+1} + v_n}{2}$. نضع $w_n = v_n - u_n$. فإن المتتالية $(w_n)$ تكون:",
+    "options": [
+      {"text": "حسابية أساسها $r = \\frac{1}{4}$", "isCorrect": false},
+      {"text": "هندسية أساسها $q = \\frac{1}{2}$", "isCorrect": false},
+      {"text": "هندسية أساسها $q = \\frac{1}{4}$", "isCorrect": true},
+      {"text": "ثابتة", "isCorrect": false}
+    ],
+    "solution": "$$w_{n+1} = v_{n+1} - u_{n+1} = \\frac{u_{n+1}+v_n}{2} - u_{n+1} = \\frac{v_n - u_{n+1}}{2} = \\frac{v_n - \\frac{u_n+v_n}{2}}{2} = \\frac{v_n - u_n}{4} = \\frac{1}{4}w_n$$<br>إذن هندسية أساسها $q = \\frac{1}{4}$."
+  },
+  {
+    "id": 22,
+    "question": "لتكن $(t_n)$ و $(s_n)$ متتاليتين تحققان: $s_{n+1} = \\frac{t_n + 3s_n}{4}$ و $t_{n+1} = \\frac{t_n + 2s_n}{3}$. نعرّف $w_n = 3t_n + 8s_n$. فإن المتتالية $(w_n)$ تكون:",
+    "options": [
+      {"text": "متتالية هندسية أساسها 2", "isCorrect": false},
+      {"text": "متتالية ثابتة", "isCorrect": true},
+      {"text": "متتالية حسابية أساسها 1", "isCorrect": false},
+      {"text": "متتالية غير مطردة", "isCorrect": false}
+    ],
+    "solution": "$$w_{n+1} = 3\\left(\\frac{t_n + 2s_n}{3}\\right) + 8\\left(\\frac{t_n + 3s_n}{4}\\right) = (t_n + 2s_n) + 2(t_n + 3s_n) = 3t_n + 8s_n = w_n$$<br>بما أن $w_{n+1} = w_n$ فالمتتالية ثابتة."
+  },
+  {
+    "id": 23,
+    "question": "متتالية تحقق العلاقة $u_{n+2} = 7u_{n+1} - 10u_n$. إذا عرّفنا المتتالية المساعدة $v_n = u_{n+1} - 5u_n$، فإن المتتالية $(v_n)$ تكون:",
+    "options": [
+      {"text": "حسابية أساسها $r = 5$", "isCorrect": false},
+      {"text": "هندسية أساسها $q = 5$", "isCorrect": false},
+      {"text": "حسابية أساسها $r = 2$", "isCorrect": false},
+      {"text": "هندسية أساسها $q = 2$", "isCorrect": true}
+    ],
+    "solution": "$$v_{n+1} = u_{n+2} - 5u_{n+1} = (7u_{n+1} - 10u_n) - 5u_{n+1} = 2u_{n+1} - 10u_n = 2(u_{n+1} - 5u_n) = 2v_n$$<br>إذن $(v_n)$ هندسية أساسها $q = 2$."
+  },
+  {
+    "id": 24,
+    "question": "متتالية تحقق العلاقة $u_{n+2} = 7u_{n+1} - 10u_n$. إذا عرّفنا المتتالية المساعدة $w_n = u_{n+1} - 2u_n$، فإن المتتالية $(w_n)$ تكون:",
+    "options": [
+      {"text": "هندسية أساسها $q = 5$", "isCorrect": true},
+      {"text": "حسابية أساسها $r = 5$", "isCorrect": false},
+      {"text": "هندسية أساسها $q = 2$", "isCorrect": false},
+      {"text": "ثابتة", "isCorrect": false}
+    ],
+    "solution": "$$w_{n+1} = u_{n+2} - 2u_{n+1} = (7u_{n+1} - 10u_n) - 2u_{n+1} = 5u_{n+1} - 10u_n = 5(u_{n+1} - 2u_n) = 5w_n$$<br>إذن $(w_n)$ هندسية أساسها $q = 5$."
+  },
+  {
+    "id": 25,
+    "question": "متتالية تحقق العلاقة $u_{n+2} = 5u_{n+1} - 6u_n$. إذا وضعنا $v_n = u_{n+1} - 2u_n$، فإن المتتالية $(v_n)$ تكون:",
+    "options": [
+      {"text": "هندسية أساسها $q = 3$", "isCorrect": true},
+      {"text": "هندسية أساسها $q = 2$", "isCorrect": false},
+      {"text": "حسابية أساسها $r = 3$", "isCorrect": false},
+      {"text": "ثابتة", "isCorrect": false}
+    ],
+    "solution": "$$v_{n+1} = u_{n+2} - 2u_{n+1} = (5u_{n+1} - 6u_n) - 2u_{n+1} = 3u_{n+1} - 6u_n = 3(u_{n+1} - 2u_n) = 3v_n$$<br>إذن هندسية أساسها $q = 3$."
+  },
+  {
+    "id": 26,
+    "question": "إذا كانت المتتالية $(u_n)$ تحقق العلاقتين: $u_{n+1} - 2u_n = 5^n$ و $u_{n+1} - 5u_n = 2^n$ أياً كان $n \\ge 0$، فإن عبارة $u_n$ بدلالة $n$ هي:",
+    "options": [
+      {"text": "$u_n = \\frac{5^n + 2^n}{3}$", "isCorrect": false},
+      {"text": "$u_n = 5^n - 2^n$", "isCorrect": false},
+      {"text": "$u_n = \\frac{5^n - 2^n}{3}$", "isCorrect": true},
+      {"text": "$u_n = 2 \\times 5^n - 2^n$", "isCorrect": false}
+    ],
+    "solution": "بطرح المعادلة الثانية من الأولى:<br>$$(u_{n+1} - 2u_n) - (u_{n+1} - 5u_n) = 5^n - 2^n \\implies 3u_n = 5^n - 2^n \\implies u_n = \\frac{5^n - 2^n}{3}$$"
+  },
+  {
+    "id": 27,
+    "question": "لتكن المتتالية المعرفة بـ $u_0 = 5$ و $u_{n+1} = 3u_n - 8$. إذا علمت أن المتتالية $v_n = u_n - 4$ هي متتالية هندسية عبارتها $v_n = 3^n$، فإن عبارة الحد العام $u_n$ بدلالة $n$ هي:",
+    "options": [
+      {"text": "$u_n = 4 \\times 3^n$", "isCorrect": false},
+      {"text": "$u_n = 3^n + 4$", "isCorrect": true},
+      {"text": "$u_n = 3^n - 4$", "isCorrect": false},
+      {"text": "$u_n = 3^{n+1}$", "isCorrect": false}
+    ],
+    "solution": "بما أن $v_n = u_n - 4$، ننقل 4 للطرف الآخر:<br>$$u_n = v_n + 4$$<br>وبالتعويض: $u_n = 3^n + 4$."
+  },
+  {
+    "id": 28,
+    "question": "لتكن المتتالية الحسابية $(u_n)_{n \\ge 0}$ المعرفة بـ $u_n = 3n - 1$. ما قيمة المقدار: $4u_2 + 4u_3 + 4u_4 - (u_5 + u_6 + u_7)$؟",
+    "options": [
+      {"text": "72", "isCorrect": false},
+      {"text": "60", "isCorrect": false},
+      {"text": "45", "isCorrect": true},
+      {"text": "36", "isCorrect": false}
+    ],
+    "solution": "باستخدام التناظر والحد الأوسط:<br>• $4(u_2 + u_3 + u_4) = 4(3u_3) = 12u_3 = 12(8) = 96$.<br>• $-(u_5 + u_6 + u_7) = -3u_6 = -3(17) = -51$.<br>الناتج $= 96 - 51 = 45$."
+  },
+  {
+    "id": 29,
+    "question": "متتالية حسابية $(u_n)_{n \\ge 0}$ تحقق $u_4 = 10$. فإن قيمة المجموع $u_2 + u_3 + u_4 + u_5 + u_6$ تساوي:",
+    "options": [
+      {"text": "45", "isCorrect": false},
+      {"text": "60", "isCorrect": false},
+      {"text": "50", "isCorrect": true},
+      {"text": "40", "isCorrect": false}
+    ],
+    "solution": "مجموع 5 حدود متعاقبة في متتالية حسابية حدها الأوسط $u_4$ هو: $5 \\times u_4 = 5 \\times 10 = 50$."
+  },
+  {
+    "id": 30,
+    "question": "متتالية حسابية $(u_n)_{n \\ge 0}$ تحقق $u_{10} - u_5 = 15$ و $u_3 = 8$. ما هي قيمة المقدار $2u_0 + u_4$؟",
+    "options": [
+      {"text": "9", "isCorrect": true},
+      {"text": "12", "isCorrect": false},
+      {"text": "15", "isCorrect": false},
+      {"text": "-7", "isCorrect": false}
+    ],
+    "solution": "$u_{10} - u_5 = 5r = 15 \\implies r = 3$.<br>$u_3 = u_0 + 3r \\implies 8 = u_0 + 9 \\implies u_0 = -1$.<br>$u_4 = u_0 + 4r = -1 + 12 = 11$.<br>إذن: $2u_0 + u_4 = 2(-1) + 11 = 9$."
+  },
+  {
+    "id": 31,
+    "question": "متتالية حسابية $(u_n)_{n \\ge 0}$ تحقق: $u_3 + u_4 = -12$ و $u_9 + u_{10} = -36$. فإن قيمة الحد الأول $u_0$ هي:",
+    "options": [
+      {"text": "1", "isCorrect": true},
+      {"text": "2", "isCorrect": false},
+      {"text": "-1", "isCorrect": false},
+      {"text": "-3", "isCorrect": false}
+    ],
+    "solution": "• $2u_0 + 7r = -12$<br>• $2u_0 + 19r = -36$<br>بالطرح: $12r = -24 \\implies r = -2$.<br>بالتعويض: $2u_0 + 7(-2) = -12 \\implies 2u_0 = 2 \\implies u_0 = 1$."
+  },
+  {
+    "id": 32,
+    "question": "متتالية حسابية حدها الأول $u_0 = 5$ وأساسها $r = 2$. إذا كان المجموع $u_0 + u_1 + \\dots + u_n = 165$، فإن عدد حدود هذا المجموع هو:",
+    "options": [
+      {"text": "12 حداً", "isCorrect": false},
+      {"text": "11 حداً", "isCorrect": true},
+      {"text": "10 حدود", "isCorrect": false},
+      {"text": "15 حداً", "isCorrect": false}
+    ],
+    "solution": "$$S = \\frac{n+1}{2}(u_0 + u_n) = \\frac{n+1}{2}(10 + 2n) = (n+1)(n+5) = 165$$<br>$$n^2 + 6n - 160 = 0 \\implies (n - 10)(n + 16) = 0 \\implies n = 10$$<br>عدد الحدود هو $n + 1 = 11$ حداً."
+  },
+  {
+    "id": 33,
+    "question": "في متتالية حسابية $(u_n)$ إذا كان $u_{15} - u_7 = 24$، فإن أساس المتتالية $r$ هو:",
+    "options": [
+      {"text": "3", "isCorrect": true},
+      {"text": "4", "isCorrect": false},
+      {"text": "2", "isCorrect": false},
+      {"text": "6", "isCorrect": false}
+    ],
+    "solution": "$$u_{15} - u_7 = (15 - 7)r = 8r \\implies 8r = 24 \\implies r = 3$$"
+  },
+  {
+    "id": 34,
+    "question": "في متتالية حسابية إذا كان $u_5 = 17$ و $u_9 = 29$، فإن عبارة $u_n$ بدلالة $n$ هي:",
+    "options": [
+      {"text": "$u_n = 3n - 1$", "isCorrect": false},
+      {"text": "$u_n = 3n + 2$", "isCorrect": true},
+      {"text": "$u_n = 2n + 7$", "isCorrect": false},
+      {"text": "$u_n = 4n - 3$", "isCorrect": false}
+    ],
+    "solution": "$$u_9 - u_5 = 4r = 12 \\implies r = 3$$<br>$$u_5 = u_0 + 5r \\implies 17 = u_0 + 15 \\implies u_0 = 2 \\implies u_n = 2 + 3n$$"
+  },
+  {
+    "id": 35,
+    "question": "إذا كانت الأعداد $3 ,\\; x ,\\; 19$ تشكل حدوداً متعاقبة لمتتالية حسابية، فإن قيمة $x$ هي:",
+    "options": [
+      {"text": "11", "isCorrect": true},
+      {"text": "12", "isCorrect": false},
+      {"text": "10", "isCorrect": false},
+      {"text": "14", "isCorrect": false}
+    ],
+    "solution": "الوسط الحسابي: $x = \\frac{3 + 19}{2} = \\frac{22}{2} = 11$."
+  },
+  {
+    "id": 36,
+    "question": "إذا كانت الأعداد $2a ,\\; a+5 ,\\; 4a-2$ تشكل حدوداً متعاقبة لمتتالية حسابية، فإن قيمة $a$ هي:",
+    "options": [
+      {"text": "$a = 4$", "isCorrect": false},
+      {"text": "$a = 2$", "isCorrect": false},
+      {"text": "$a = 3$", "isCorrect": true},
+      {"text": "$a = 5$", "isCorrect": false}
+    ],
+    "solution": "$$2(a + 5) = 2a + (4a - 2) \\implies 2a + 10 = 6a - 2 \\implies 4a = 12 \\implies a = 3$$"
+  },
+  {
+    "id": 37,
+    "question": "تكون المتتالية الحسابية $(u_n)$ متتالية ثابتة إذا وفقط إذا كان أساسها $r$ يساوي:",
+    "options": [
+      {"text": "$r = 0$", "isCorrect": true},
+      {"text": "$r = 1$", "isCorrect": false},
+      {"text": "$r > 0$", "isCorrect": false},
+      {"text": "$r = -1$", "isCorrect": false}
+    ],
+    "solution": "في المتتالية الحسابية $u_{n+1} - u_n = r$. تكون الحدود متساوية إذا وفقط إذا كان $r = 0$."
+  },
+  {
+    "id": 38,
+    "question": "في متتالية حسابية $(u_n)_{n=0}^{20}$، إذا كان $u_0 + u_{20} = 50$، فإن مجموع الحدود $S = u_0 + u_1 + \\dots + u_{20}$ يساوي:",
+    "options": [
+      {"text": "500", "isCorrect": false},
+      {"text": "1050", "isCorrect": false},
+      {"text": "525", "isCorrect": true},
+      {"text": "250", "isCorrect": false}
+    ],
+    "solution": "عدد الحدود $N = 20 - 0 + 1 = 21$.<br>$$S = \\frac{21}{2}(u_0 + u_{20}) = \\frac{21}{2}(50) = 21 \\times 25 = 525$$"
+  },
+  {
+    "id": 39,
+    "question": "متتالية هندسية $(u_n)_{n \\ge 0}$ حدودها موجبة تحقق $\\frac{u_6}{u_2} = 16$ و $u_5 = 160$. فإن عبارة الحد العام $u_n$ هي:",
+    "options": [
+      {"text": "$u_n = 10 \\times 2^{n-1}$", "isCorrect": false},
+      {"text": "$u_n = 2 \\times 5^n$", "isCorrect": false},
+      {"text": "$u_n = 5 \\times 4^n$", "isCorrect": false},
+      {"text": "$u_n = 5 \\times 2^n$", "isCorrect": true}
+    ],
+    "solution": "$$\\frac{u_6}{u_2} = q^4 = 16 \\implies q = 2$$<br>$$u_5 = u_0 \\cdot q^5 \\implies u_0 \\cdot 32 = 160 \\implies u_0 = 5 \\implies u_n = 5 \\times 2^n$$"
+  },
+  {
+    "id": 40,
+    "question": "متتالية هندسية $(u_n)_{n \\ge 0}$ تحقق $\\frac{u_{n+1}}{u_n} = 2$ و $u_5 = 160$. فإن عبارة $u_n$ بدلالة $n$ هي:",
+    "options": [
+      {"text": "$u_n = 5 \\times 2^n$", "isCorrect": true},
+      {"text": "$u_n = 10 \\times 2^{n-1}$", "isCorrect": false},
+      {"text": "$u_n = 2 \\times 5^n$", "isCorrect": false},
+      {"text": "$u_n = 5 \\times 4^n$", "isCorrect": false}
+    ],
+    "solution": "الأساس $q = 2$. والحد $u_5 = u_0 \\cdot 2^5 = 32u_0 = 160 \\implies u_0 = 5$. إذن $u_n = 5 \\times 2^n$."
+  },
+  {
+    "id": 41,
+    "question": "في متتالية هندسية حدودها موجبة، إذا كان $u_8 = 384$ و $u_5 = 48$، فإن الأساس $q$ يساوي:",
+    "options": [
+      {"text": "2", "isCorrect": true},
+      {"text": "4", "isCorrect": false},
+      {"text": "8", "isCorrect": false},
+      {"text": "3", "isCorrect": false}
+    ],
+    "solution": "$$\\frac{u_8}{u_5} = q^3 = \\frac{384}{48} = 8 \\implies q = 2$$"
+  },
+  {
+    "id": 42,
+    "question": "إذا كانت الأعداد الموجبة $2 ,\\; y ,\\; 18$ تشكل حدوداً متعاقبة لمتتالية هندسية، فإن قيمة $y$ هي:",
+    "options": [
+      {"text": "6", "isCorrect": true},
+      {"text": "4", "isCorrect": false},
+      {"text": "9", "isCorrect": false},
+      {"text": "10", "isCorrect": false}
+    ],
+    "solution": "الوسط الهندسي: $y^2 = 2 \\times 18 = 36 \\implies y = 6$ (لأن الحدود موجبة)."
+  },
+  {
+    "id": 43,
+    "question": "إذا كانت الأعداد $x ,\\; x+3 ,\\; 4x$ تشكل حدوداً متعاقبة لمتتالية هندسية حدودها موجبة، فإن قيمة $x$ هي:",
+    "options": [
+      {"text": "$x = 4$", "isCorrect": false},
+      {"text": "$x = 2$", "isCorrect": false},
+      {"text": "$x = 1$", "isCorrect": false},
+      {"text": "$x = 3$", "isCorrect": true}
+    ],
+    "solution": "$$(x + 3)^2 = 4x^2 \\implies x^2 + 6x + 9 = 4x^2 \\implies 3x^2 - 6x - 9 = 0 \\implies x^2 - 2x - 3 = 0$$<br>$(x - 3)(x + 1) = 0$. بما أن الحدود موجبة فإن $x = 3$."
+  },
+  {
+    "id": 44,
+    "question": "متتالية هندسية حدها الأول $u_0 = 3$ وأساسها $q = -2$. قيمة الحد $u_5$ هي:",
+    "options": [
+      {"text": "-48", "isCorrect": false},
+      {"text": "48", "isCorrect": false},
+      {"text": "-96", "isCorrect": true},
+      {"text": "96", "isCorrect": false}
+    ],
+    "solution": "$$u_5 = u_0 \\cdot q^5 = 3 \\times (-2)^5 = 3 \\times (-32) = -96$$"
+  },
+  {
+    "id": 45,
+    "question": "قيمة المجموع $S = 1 + 3 + 3^2 + \\dots + 3^9$ تساوي:",
+    "options": [
+      {"text": "$\\frac{3^{10} - 1}{2}$", "isCorrect": true},
+      {"text": "$3^{10} - 1$", "isCorrect": false},
+      {"text": "$\\frac{3^9 - 1}{2}$", "isCorrect": false},
+      {"text": "$\\frac{3^{10} + 1}{2}$", "isCorrect": false}
+    ],
+    "solution": "مجموع حدود متتالية هندسية أساسها $q=3$ وحدها الأول 1 وعدد حدودها 10:<br>$$S = 1 \\cdot \\frac{1 - 3^{10}}{1 - 3} = \\frac{3^{10} - 1}{2}$$"
+  },
+  {
+    "id": 46,
+    "question": "متتالية هندسية حدها الأول $u_0 = 1$ وأساسها $q = 2$. فإن قيمة المجموع $S = u_0 + u_2 + u_4 + \\dots + u_{10}$ تساوي:",
+    "options": [
+      {"text": "1023", "isCorrect": false},
+      {"text": "4095", "isCorrect": false},
+      {"text": "1365", "isCorrect": true},
+      {"text": "2047", "isCorrect": false}
+    ],
+    "solution": "الحدود الزوجية تشكل متتالية هندسية أساسها $Q = q^2 = 4$ وعدد حدودها 6:<br>$$S = 1 \\cdot \\frac{4^6 - 1}{4 - 1} = \\frac{4096 - 1}{3} = 1365$$"
+  },
+  {
+    "id": 47,
+    "question": "لتكن $(u_n)$ متتالية حسابية حدها $u_1 = \\frac{1}{2}$. نعرّف المتتالية $w_n = 3^{\\frac{1}{3}u_n}$. ما قيمة الجداء $P = w_0 \\cdot w_1 \\cdot w_2$؟",
+    "options": [
+      {"text": "$\\sqrt{3}$", "isCorrect": true},
+      {"text": "3", "isCorrect": false},
+      {"text": "$3\\sqrt{3}$", "isCorrect": false},
+      {"text": "1", "isCorrect": false}
+    ],
+    "solution": "$$P = 3^{\\frac{1}{3}(u_0 + u_1 + u_2)} = 3^{\\frac{1}{3}(3u_1)} = 3^{u_1} = 3^{1/2} = \\sqrt{3}$$"
+  },
+  {
+    "id": 48,
+    "question": "لتكن $(u_n)$ متتالية حسابية حدها $u_2 = 1$. نعرّف المتتالية $w_n = 2^{u_n}$. ما قيمة الجداء $P = w_1 \\cdot w_2 \\cdot w_3$؟",
+    "options": [
+      {"text": "8", "isCorrect": true},
+      {"text": "16", "isCorrect": false},
+      {"text": "4", "isCorrect": false},
+      {"text": "2", "isCorrect": false}
+    ],
+    "solution": "$$P = 2^{u_1 + u_2 + u_3} = 2^{3u_2} = 2^{3(1)} = 2^3 = 8$$"
+  },
+  {
+    "id": 49,
+    "question": "لتكن المتتالية $S_n = 1^3 + 2^3 + 3^3 + \\dots + n^3$. العبارة الصحيحة للمجموع $S_n$ بدلالة $n$ ($n \\ge 1$) هي:",
+    "options": [
+      {"text": "$S_n = \\frac{n(n+1)^2}{2}$", "isCorrect": false},
+      {"text": "$S_n = \\frac{n^2(n+1)^2}{4}$", "isCorrect": true},
+      {"text": "$S_n = \\frac{n^2(n+1)}{4}$", "isCorrect": false},
+      {"text": "$S_n = \\frac{n(n+1)}{2}$", "isCorrect": false}
+    ],
+    "solution": "بالتعويض عند $n=1$: $S_1 = 1$.<br>عند $n=2$: $S_2 = 1 + 8 = 9$. بالتعويض في القانون: $\\frac{4 \\times 9}{4} = 9$. فالعبارة الصحيحة هي $\\frac{n^2(n+1)^2}{4}$."
+  },
+  {
+    "id": 50,
+    "question": "المجموع $S_n = 1 \\times 2 + 2 \\times 3 + 3 \\times 4 + \\dots + n(n+1)$ أياً كان $n \\ge 1$ يساوي:",
+    "options": [
+      {"text": "$\\frac{n(n+1)(n+2)}{3}$", "isCorrect": true},
+      {"text": "$\\frac{n(n+1)(2n+1)}{6}$", "isCorrect": false},
+      {"text": "$\\frac{n(n+1)(n+2)}{6}$", "isCorrect": false},
+      {"text": "$\\frac{n^2(n+1)}{2}$", "isCorrect": false}
+    ],
+    "solution": "بالتعويض عند $n=1$: $S_1 = 2$. بالتعويض في القانون: $\\frac{1 \\times 2 \\times 3}{3} = 2$.<br>عند $n=2$: $S_2 = 2 + 6 = 8$. بالتعويض: $\\frac{2 \\times 3 \\times 4}{3} = 8$."
+  },
+  {
+    "id": 51,
+    "question": "المجموع $S_n = 1 + 2 + 3 + \\dots + n$ أياً كان $n \\ge 1$ يساوي:",
+    "options": [
+      {"text": "$\\frac{n(n-1)}{2}$", "isCorrect": false},
+      {"text": "$n^2$", "isCorrect": false},
+      {"text": "$\\frac{n(n+1)}{4}$", "isCorrect": false},
+      {"text": "$\\frac{n(n+1)}{2}$", "isCorrect": true}
+    ],
+    "solution": "مجموع أول $n$ عدداً طبيعياً موجب: $S_n = \\frac{n(n+1)}{2}$."
+  },
+  {
+    "id": 52,
+    "question": "المجموع $S_n = 1 + 2 + 3 + \\dots + (n-1)$ أياً كان $n \\ge 2$ يساوي:",
+    "options": [
+      {"text": "$\\frac{n(n+1)}{2}$", "isCorrect": false},
+      {"text": "$\\frac{n(n-1)}{2}$", "isCorrect": true},
+      {"text": "$\\frac{(n-1)(n-2)}{2}$", "isCorrect": false},
+      {"text": "$n(n-1)$", "isCorrect": false}
+    ],
+    "solution": "$$S_n = \\frac{(n-1)[1 + (n-1)]}{2} = \\frac{n(n-1)}{2}$$"
+  },
+  {
+    "id": 53,
+    "question": "قيمة المجموع $S = 1 + 3 + 5 + \\dots + 39$ تساوي:",
+    "options": [
+      {"text": "380", "isCorrect": false},
+      {"text": "400", "isCorrect": true},
+      {"text": "420", "isCorrect": false},
+      {"text": "361", "isCorrect": false}
+    ],
+    "solution": "الحد الأخير $2n - 1 = 39 \\implies n = 20$. ومجموع أول $n$ عدداً فردياً هو $n^2 = 20^2 = 400$."
+  },
+  {
+    "id": 54,
+    "question": "قيمة المجموع $S = 2 + 4 + 6 + \\dots + 40$ تساوي:",
+    "options": [
+      {"text": "400", "isCorrect": false},
+      {"text": "440", "isCorrect": false},
+      {"text": "420", "isCorrect": true},
+      {"text": "210", "isCorrect": false}
+    ],
+    "solution": "الحد الأخير $2n = 40 \\implies n = 20$. ومجموع أول $n$ عدداً زوجياً هو $n(n+1) = 20 \\times 21 = 420$."
+  },
+  {
+    "id": 55,
+    "question": "مجموع مضاعفات العدد 3 المحصورة بين 1 و 100 هو $S = 3 + 6 + 9 + \\dots + 99$. قيمته هي:",
+    "options": [
+      {"text": "1683", "isCorrect": true},
+      {"text": "1650", "isCorrect": false},
+      {"text": "1716", "isCorrect": false},
+      {"text": "3366", "isCorrect": false}
+    ],
+    "solution": "عدد الحدود 33. المجموع: $S = \\frac{33}{2}(3 + 99) = \\frac{33}{2}(102) = 1683$."
+  },
+  {
+    "id": 56,
+    "question": "عدد حدود المجموع $S = u_5 + u_6 + \\dots + u_{28}$ هو:",
+    "options": [
+      {"text": "23", "isCorrect": false},
+      {"text": "24", "isCorrect": true},
+      {"text": "25", "isCorrect": false},
+      {"text": "28", "isCorrect": false}
+    ],
+    "solution": "عدد الحدود $= 28 - 5 + 1 = 24$ حداً."
+  },
+  {
+    "id": 57,
+    "question": "في المتتالية $(u_n)$، عدد حدود المجموع $S = u_k + u_{k+1} + \\dots + u_m$ (حيث $m \\ge k$) هو دوماً:",
+    "options": [
+      {"text": "$m - k + 1$", "isCorrect": true},
+      {"text": "$m - k$", "isCorrect": false},
+      {"text": "$m - k - 1$", "isCorrect": false},
+      {"text": "$m + k + 1$", "isCorrect": false}
+    ],
+    "solution": "القاعدة العامة: دليل الحد الأخير مطروحاً منه دليل الأول مضافاً إليه واحد: $m - k + 1$."
+  },
+  {
+    "id": 58,
+    "question": "في إثبات المتراجحة $E(n): 2^n \\ge n + 1$ بالتدريج، فإن فرضية التدريج تعني:",
+    "options": [
+      {"text": "نفرض صحة $2^n \\ge n + 1$", "isCorrect": true},
+      {"text": "نفرض صحة $2^{n+1} \\ge n + 2$", "isCorrect": false},
+      {"text": "نثبت صحة $2^0 \\ge 1$", "isCorrect": false},
+      {"text": "نحسب $2^n - (n+1) = 0$", "isCorrect": false}
+    ],
+    "solution": "فرضية التدريج هي افتراض صحة القضية عند $n$، أي افتراض أن $2^n \\ge n + 1$."
+  },
+  {
+    "id": 59,
+    "question": "لإثبات صحة $E(n+1): 2^{n+1} \\ge n + 2$ انطلاقاً من الفرض $2^n \\ge n+1$، الخطوة المعتمدة هي:",
+    "options": [
+      {"text": "تربيع طرفي الفرض", "isCorrect": false},
+      {"text": "إضافة 1 لطرفي الفرض", "isCorrect": false},
+      {"text": "قسمة الفرض على 2", "isCorrect": false},
+      {"text": "ضرب طرفي الفرض بالعدد 2", "isCorrect": true}
+    ],
+    "solution": "نضرب طرفي الفرض بـ 2: $2 \\times 2^n \\ge 2(n+1) = 2n + 2 = (n+2) + n \\ge n+2$."
+  },
+  {
+    "id": 60,
+    "question": "متراجحة برنولي تنص على أنه أياً كان $x > -1$ والعدد الطبيعي $n \\ge 0$ فإن:",
+    "options": [
+      {"text": "$(1+x)^n \\ge 1 + nx$", "isCorrect": true},
+      {"text": "$(1+x)^n \\ge 1 + x^n$", "isCorrect": false},
+      {"text": "$(1+x)^n \\le 1 + nx$", "isCorrect": false},
+      {"text": "$(1+x)^n = 1 + nx$", "isCorrect": false}
+    ],
+    "solution": "متراجحة برنولي الشهيرة تنص على أن $(1+x)^n \\ge 1 + nx$ لجميع $x > -1$ و $n \\ge 0$."
+  }
+];
 
   function renderQuestions() {
     const container = document.getElementById('questions-list');
