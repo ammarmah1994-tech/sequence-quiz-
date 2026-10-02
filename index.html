@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منصة ammar - اختبار المتتاليات المؤتمت</title>
+  <title>منصة ammar - بنك الأسئلة المؤتمتة (40 سؤالاً في المتتاليات)</title>
   <!-- MathJax -->
   <script>
     window.MathJax = {
@@ -27,35 +27,37 @@
       --wrong: #b91c1c;
       --wrong-bg: #fef2f2;
       --border: #e2e8f0;
-      --radius: 14px;
+      --radius: 12px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding-bottom: 60px; }
-    header { background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%); color: white; padding: 30px 20px; text-align: center; }
-    .logo-badge { display: inline-block; font-size: 2.2rem; font-weight: 900; letter-spacing: 2px; background: white; color: var(--primary); padding: 4px 26px; border-radius: 30px; margin-bottom: 12px; }
-    header h1 { font-size: 1.5rem; margin-bottom: 6px; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding-bottom: 70px; }
+    header { background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%); color: white; padding: 35px 20px; text-align: center; }
+    .logo-badge { display: inline-block; font-size: 2.2rem; font-weight: 900; letter-spacing: 2px; background: white; color: var(--primary); padding: 4px 28px; border-radius: 35px; margin-bottom: 12px; }
+    header h1 { font-size: 1.6rem; margin-bottom: 6px; }
     header p { font-size: 0.95rem; opacity: 0.9; }
-    .container { max-width: 900px; margin: 30px auto; padding: 0 16px; }
-    .instructions-card { background: white; border-radius: var(--radius); padding: 18px 24px; margin-bottom: 24px; border-right: 5px solid var(--accent); box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+    .container { max-width: 920px; margin: 30px auto; padding: 0 16px; }
+    .instructions-card { background: white; border-radius: var(--radius); padding: 20px 24px; margin-bottom: 24px; border-right: 5px solid var(--accent); box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
     .stats-badge { background: #f1f5f9; color: var(--primary); font-weight: bold; padding: 8px 16px; border-radius: 10px; font-size: 0.95rem; }
-    .question-card { background: var(--card-bg); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid var(--border); }
+    .question-card { background: var(--card-bg); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid var(--border); }
     .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
     .q-num { font-weight: bold; color: var(--accent); font-size: 1.1rem; }
+    .q-points { background: #e0f2fe; color: #0369a1; padding: 3px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; }
     .q-text { font-size: 1.12rem; font-weight: 600; color: #1e293b; margin-bottom: 18px; line-height: 1.8; }
-    .options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 10px; }
+    .options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 10px; }
     .option-label { display: flex; align-items: center; padding: 12px 16px; background: #f8fafc; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; transition: all 0.2s ease; }
     .option-label:hover { background: #f1f5f9; border-color: #cbd5e1; }
     .option-label input[type="radio"] { width: 18px; height: 18px; margin-left: 12px; cursor: pointer; }
     .option-label.is-correct { background: var(--correct-bg) !important; border-color: var(--correct) !important; color: var(--correct); font-weight: bold; }
     .option-label.is-wrong { background: var(--wrong-bg) !important; border-color: var(--wrong) !important; color: var(--wrong); text-decoration: line-through; }
     .solution-box { margin-top: 18px; padding: 16px 20px; border-radius: 10px; background: #fdfefe; border-right: 4px solid var(--accent); display: none; }
-    .solution-box h4 { color: var(--primary); margin-bottom: 8px; }
+    .solution-box h4 { color: var(--primary); margin-bottom: 8px; font-size: 1rem; }
     .solution-content { font-size: 0.96rem; color: #334155; line-height: 1.8; }
     .submit-bar { text-align: center; margin-top: 40px; }
-    .btn-submit { background: linear-gradient(135deg, #1e3a8a, #0284c7); color: white; border: none; padding: 15px 45px; font-size: 1.15rem; font-weight: bold; border-radius: 30px; cursor: pointer; }
-    .btn-reset { background: #64748b; color: white; border: none; padding: 12px 30px; font-size: 1rem; font-weight: bold; border-radius: 30px; cursor: pointer; margin-right: 12px; display: none; }
-    .result-modal { background: white; border-radius: var(--radius); padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid var(--border); text-align: center; display: none; }
-    .score-circle { width: 110px; height: 110px; border-radius: 50%; background: #eff6ff; border: 5px solid var(--accent); color: var(--primary); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 16px; font-weight: 900; }
+    .btn-submit { background: linear-gradient(135deg, #1e3a8a, #0284c7); color: white; border: none; padding: 16px 50px; font-size: 1.2rem; font-weight: bold; border-radius: 35px; cursor: pointer; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35); }
+    .btn-submit:hover { transform: translateY(-2px); }
+    .btn-reset { background: #64748b; color: white; border: none; padding: 12px 32px; font-size: 1rem; font-weight: bold; border-radius: 30px; cursor: pointer; margin-right: 12px; display: none; }
+    .result-modal { background: white; border-radius: var(--radius); padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 2px solid var(--border); text-align: center; display: none; }
+    .score-circle { width: 120px; height: 120px; border-radius: 50%; background: #eff6ff; border: 5px solid var(--accent); color: var(--primary); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 16px; font-weight: 900; }
     footer { text-align: center; margin-top: 50px; color: #64748b; font-size: 0.9rem; }
   </style>
 </head>
@@ -63,179 +65,977 @@
 
   <header>
     <div class="logo-badge">ammar</div>
-    <h1>بنك الأسئلة المؤتمتة - بحث المتتاليات</h1>
+    <h1>بنك الأسئلة المؤتمتة الشامل - المتتاليات (40 سؤالاً)</h1>
     <p>الثالث الثانوي العلمي - الجمهورية العربية السورية</p>
   </header>
 
   <div class="container">
     <div class="instructions-card">
       <div>
-        <h3 style="color: var(--primary);">تعليمات الاختبار:</h3>
-        <p style="color: var(--text-muted); font-size: 0.92rem;">اختر الإجابة المناسبة لكل سؤال. عند الانتهاء اضغط "تسليم وإنهاء الاختبار" لتظهر النتيجة والحل النموذجي بالتفصيل دون عداد وقت.</p>
+        <h3 style="color: var(--primary); margin-bottom: 4px;">تعليمات الاختبار الذاتي الشامل:</h3>
+        <p style="color: var(--text-muted); font-size: 0.92rem;">الاختبار يضم 40 سؤالاً مؤتمتاً يغطي كافة أفكار بحث المتتاليات. لا يوجد عداد وقت. حل بتركيز ثم اضغط "تسليم وإنهاء الاختبار" لتظهر النتيجة والحلول النموذجية بالتفصيل.</p>
       </div>
-      <div class="stats-badge">12 سؤالاً نموذجياً</div>
+      <div class="stats-badge">40 سؤالاً مؤتمتاً</div>
     </div>
 
+    <!-- Results Section -->
     <div class="result-modal" id="results-card">
       <div class="score-circle">
-        <div style="font-size: 2rem; line-height: 1;" id="score-display">0</div>
-        <div style="font-size: 0.9rem; color: #64748b;" id="score-max">من 12</div>
+        <div style="font-size: 2.1rem; line-height: 1;" id="score-display">0</div>
+        <div style="font-size: 0.9rem; color: #64748b;" id="score-max">من 40</div>
       </div>
       <h2 id="result-message" style="color: var(--primary); margin-bottom: 8px;">أحسنت!</h2>
-      <p style="color: var(--text-muted); margin-bottom: 20px;">تم تصحيح الأسئلة وعرض خطوات الحل الوزارية أدناه.</p>
-      <button class="btn-reset" id="btn-reset" onclick="resetQuiz()">إعادة الاختبار</button>
+      <p id="result-detail" style="color: var(--text-muted); margin-bottom: 20px;">تم تصحيح جميع الأسئلة بالأسفل، يمكنك مراجعة طريقة الحل النموذجية لكل سؤال.</p>
+      <button class="btn-reset" id="btn-reset" onclick="resetQuiz()">إعادة الاختبار من جديد</button>
     </div>
 
+    <!-- Questions Container -->
     <form id="quiz-form">
       <div id="questions-list"></div>
+
       <div class="submit-bar">
         <button type="button" class="btn-submit" id="btn-submit" onclick="gradeQuiz()">تسليم وإنهاء الاختبار</button>
       </div>
     </form>
 
-    <footer>منصة <strong>ammar</strong> التعليمية &copy; 2026</footer>
+    <footer>
+      حقوق الإعداد البرمجي والرياضي محفوظة &copy; منصة <strong>ammar</strong> التعليمية 2026
+    </footer>
   </div>
 
   <script>
   const quizData = [
-    {
-      id: 1,
-      question: "لتكن المتتالية $(u_n)_{n \\ge 0}$ المعرفة تدريجياً: $u_{n+1} = \\frac{4}{5}u_n + k$ مع $u_0 = 10$. ما هي قيمة $k$ التي تجعل المتتالية $(u_n)$ ثابتة؟",
-      options: [
-        { text: "$k = 2$", isCorrect: true },
-        { text: "$k = -2$", isCorrect: false },
-        { text: "$k = 5$", isCorrect: false },
-        { text: "$k = 10$", isCorrect: false }
-      ],
-      solution: "المتتالية ثابتة تعني $u_{n+1} = u_n = u_0 = 10$.<br>بالتعويض: $10 = \\frac{4}{5}(10) + k \\implies 10 = 8 + k \\implies k = 2$."
-    },
-    {
-      id: 2,
-      question: "لتكن المتتالية $(u_n)_{n \\ge 0}$ المعرفة وفق: $u_n = 4n - 2$. ما قيمة المقدار: $3u_2 + 3u_3 + 3u_4 - (u_5 + u_6 + u_7)$؟",
-      options: [
-        { text: "24", isCorrect: true },
-        { text: "36", isCorrect: false },
-        { text: "0", isCorrect: false },
-        { text: "-18", isCorrect: false }
-      ],
-      solution: "المتتالية حسابية أساسها $r=4$.<br>• $3(u_2+u_3+u_4) = 3(3u_3) = 9u_3 = 9(10) = 90$.<br>• $-(u_5+u_6+u_7) = -3u_6 = -3(22) = -66$.<br>المقدار الكلي $= 90 - 66 = 24$."
-    },
-    {
-      id: 3,
-      question: "متتالية هندسية $(u_n)_{n \\ge 0}$ حدودها موجبة تحقق $\\frac{u_6}{u_2} = 81$ و $u_5 = 486$. عبارة حدها العام $u_n$ هي:",
-      options: [
-        { text: "$u_n = 2 \\times 3^n$", isCorrect: true },
-        { text: "$u_n = 6 \\times 3^{n-1}$", isCorrect: false },
-        { text: "$u_n = 3 \\times 2^n$", isCorrect: false },
-        { text: "$u_n = 2 \\times 3^{n+1}$", isCorrect: false }
-      ],
-      solution: "$\\frac{u_6}{u_2} = q^4 = 81 \\implies q = 3$ (لأن الحدود موجبة).<br>لدينا $u_5 = u_0 \\cdot q^5 \\implies u_0 \\cdot 243 = 486 \\implies u_0 = 2$.<br>إذن $u_n = 2 \\times 3^n$."
-    },
-    {
-      id: 4,
-      question: "لتكن المتتالية المعرفة تدريجياً: $u_{n+1} = \\frac{1}{2}\\left(u_n + \\frac{3}{u_n}\\right)$ مع $u_n > 0$. نعرّف $v_n = \\frac{u_n - \\sqrt{3}}{u_n + \\sqrt{3}}$. فإن المتتالية $(v_n)$ تحقق:",
-      options: [
-        { text: "$v_{n+1} = v_n^2$", isCorrect: true },
-        { text: "$v_{n+1} = 2v_n$", isCorrect: false },
-        { text: "$v_{n+1} = \\sqrt{v_n}$", isCorrect: false },
-        { text: "$v_{n+1} = \\frac{1}{2}v_n$", isCorrect: false }
-      ],
-      solution: "نعوض $u_{n+1} = \\frac{u_n^2 + 3}{2u_n}$ في عبارة $v_{n+1}$:<br>$$v_{n+1} = \\frac{\\frac{u_n^2+3}{2u_n} - \\sqrt{3}}{\\frac{u_n^2+3}{2u_n} + \\sqrt{3}} = \\frac{u_n^2 - 2\\sqrt{3}u_n + 3}{u_n^2 + 2\\sqrt{3}u_n + 3} = \\frac{(u_n - \\sqrt{3})^2}{(u_n + \\sqrt{3})^2} = v_n^2$$"
-    },
-    {
-      id: 5,
-      question: "لتكن المتتالية $(u_n)$ تحقق: $u_{n+1} = 9u_n + 8$ مع $u_n \\ge 0$. نعرّف المتتالية $v_n = \\sqrt{u_n + 1}$. فإن طبيعة المتتالية $(v_n)$ هي:",
-      options: [
-        { text: "متتالية هندسية أساسها $q = 3$", isCorrect: true },
-        { text: "متتالية حسابية أساسها $r = 3$", isCorrect: false },
-        { text: "متتالية هندسية أساسها $q = 9$", isCorrect: false },
-        { text: "متتالية ثابتة", isCorrect: false }
-      ],
-      solution: "$$v_{n+1} = \\sqrt{u_{n+1} + 1} = \\sqrt{9u_n + 9} = 3\\sqrt{u_n + 1} = 3v_n$$<br>فالمتتالية هندسية أساسها $q = 3$."
-    },
-    {
-      id: 6,
-      question: "متتالية معرفة تدريجياً: $u_{n+1} = \\frac{16}{8 - u_n}$ مع $u_n \\ne 4$. نضع $v_n = \\frac{1}{u_n - 4}$. فإن المتتالية $(v_n)$ تكون:",
-      options: [
-        { text: "متتالية حسابية أساسها $r = -\\frac{1}{4}$", isCorrect: true },
-        { text: "متتالية حسابية أساسها $r = 4$", isCorrect: false },
-        { text: "متتالية هندسية أساسها $q = -\\frac{1}{4}$", isCorrect: false },
-        { text: "ليست حسابية ولا هندسية", isCorrect: false }
-      ],
-      solution: "$$v_{n+1} - v_n = \\frac{8 - u_n}{4(u_n - 4)} - \\frac{4}{4(u_n - 4)} = \\frac{-(u_n - 4)}{4(u_n - 4)} = -\\frac{1}{4}$$<br>الفرق ثابت، فالمتتالية حسابية وأساسها $r = -\\frac{1}{4}$."
-    },
-    {
-      id: 7,
-      question: "لتكن المتتاليتان $(u_n)$ و $(v_n)$ حيث $u_{n+1} = \\frac{u_n + v_n}{2}$ و $v_{n+1} = \\frac{u_{n+1} + v_n}{2}$. نضع $w_n = v_n - u_n$. فإن $(w_n)$ تكون:",
-      options: [
-        { text: "متتالية هندسية أساسها $q = \\frac{1}{4}$", isCorrect: true },
-        { text: "متتالية هندسية أساسها $q = \\frac{1}{2}$", isCorrect: false },
-        { text: "متتالية حسابية أساسها $r = -\\frac{1}{4}$", isCorrect: false },
-        { text: "متتالية ثابتة", isCorrect: false }
-      ],
-      solution: "$$w_{n+1} = v_{n+1} - u_{n+1} = \\frac{v_n - u_{n+1}}{2} = \\frac{v_n - \\frac{u_n+v_n}{2}}{2} = \\frac{v_n - u_n}{4} = \\frac{1}{4}w_n$$<br>إذن هندسية أساسها $q = \\frac{1}{4}$."
-    },
-    {
-      id: 8,
-      question: "المقدار $7^{2n} - 2^{2n}$ أياً كان العدد الطبيعي $n \\ge 1$ يقبل القسمة دوماً على العدد الطبيعي:",
-      options: [
-        { text: "45", isCorrect: true },
-        { text: "21", isCorrect: false },
-        { text: "14", isCorrect: false },
-        { text: "11", isCorrect: false }
-      ],
-      solution: "$$7^{2n} - 2^{2n} = 49^n - 4^n = (49 - 4) \\times M = 45 \\times M$$<br>إذن يقبل القسمة على 45 دوماً."
-    },
-    {
-      id: 9,
-      question: "متتالية حسابية $(u_n)_{n \\ge 0}$ تحقق: $u_2 + u_3 = -8$ و $u_7 + u_8 = -28$. فإن قيمة الحد الأول $u_0$ هي:",
-      options: [
-        { text: "$u_0 = 1$", isCorrect: true },
-        { text: "$u_0 = -1$", isCorrect: false },
-        { text: "$u_0 = 3$", isCorrect: false },
-        { text: "$u_0 = -3$", isCorrect: false }
-      ],
-      solution: "• $2u_0 + 5r = -8$<br>• $2u_0 + 15r = -28$<br>بالطرح: $10r = -20 \\implies r = -2$.<br>بالتعويض: $2u_0 + 5(-2) = -8 \\implies 2u_0 = 2 \\implies u_0 = 1$."
-    },
-    {
-      id: 10,
-      question: "ما هو أصغر عدد طبيعي $n$ يحقق المتراجحة: $3^n \\ge 2^n + 5n^2$؟",
-      options: [
-        { text: "$n = 5$", isCorrect: true },
-        { text: "$n = 4$", isCorrect: false },
-        { text: "$n = 3$", isCorrect: false },
-        { text: "$n = 2$", isCorrect: false }
-      ],
-      solution: "بتجريب الأعداد الطبيعية تصاعدياً:<br>• عند $n=4$: $81 \\ge 16 + 80 = 96$ (غير محققة).<br>• عند $n=5$: $3^5 = 243$ والطرف الأيمن $32 + 125 = 157$. بما أن $243 \\ge 157$ فالحل الأصغر هو $n=5$."
-    },
-    {
-      id: 11,
-      question: "متتالية حسابية حدها الأول $u_0 = 3$ وأساسها $r = 2$. إذا كان مجموع حدودها الأولى $S = u_0 + u_1 + \\dots + u_n = 120$، فإن عدد حدود هذا المجموع هو:",
-      options: [
-        { text: "10 حدود", isCorrect: true },
-        { text: "9 حدود", isCorrect: false },
-        { text: "11 حداً", isCorrect: false },
-        { text: "12 حداً", isCorrect: false }
-      ],
-      solution: "عدد الحدود هو $N = n+1$. الحد الأخير $u_n = 3 + 2n$.<br>قانون المجموع: $S = \\frac{n+1}{2}(u_0 + u_n) = \\frac{n+1}{2}(6 + 2n) = (n+1)(n+3) = 120$.<br>$$n^2 + 4n + 3 = 120 \\implies n^2 + 4n - 117 = 0 \\implies (n-9)(n+13) = 0$$<br>إذن $n = 9$، وعدد الحدود $= n + 1 = 9 + 1 = 10$."
-    },
-    {
-      id: 12,
-      question: "لتكن $(u_n)$ متتالية حسابية أساسها $r = \\frac{1}{3}$ وحدها $u_1 = \\frac{1}{2}$. نضع $w_n = 3^{\\frac{1}{2}u_n}$. ما قيمة الجداء $P = w_0 \\cdot w_1 \\cdot w_2$؟",
-      options: [
-        { text: "$\\sqrt{3}$", isCorrect: true },
-        { text: "3", isCorrect: false },
-        { text: "$3\\sqrt{3}$", isCorrect: false },
-        { text: "1", isCorrect: false }
-      ],
-      solution: "$$P = 3^{\\frac{1}{2}(u_0 + u_1 + u_2)}$$<br>بما أن الحدود متعاقبة في متتالية حسابية فإن $u_0 + u_1 + u_2 = 3u_1 = 3(\\frac{1}{2}) = \\frac{3}{2}$.<br>إذن الأس هو: $\\frac{1}{2} \\times \\frac{3}{2} = \\frac{3}{4}$ (أو بحساب $u_1$ مباشرة $3^{\\frac{1}{2}} = \\sqrt{3}$ بحسب نص التمرين المرفق)."
-    }
-  ];
+  {
+    "id": 1,
+    "question": "لتكن المتتالية $(u_n)_{n \\ge 0}$ المعرفة تدريجياً: $u_{n+1} = \\frac{3}{5}u_n + a$ مع $u_0 = 15$. ما هي قيمة $a$ التي تجعل المتتالية $(u_n)$ ثابتة؟",
+    "options": [
+      {
+        "text": "$a = 6$",
+        "isCorrect": true
+      },
+      {
+        "text": "$a = -6$",
+        "isCorrect": false
+      },
+      {
+        "text": "$a = 9$",
+        "isCorrect": false
+      },
+      {
+        "text": "$a = 15$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "المتتالية ثابتة تعني $u_{n+1} = u_n = u_0 = 15$.<br>بالتعويض: $15 = \\frac{3}{5}(15) + a \\implies 15 = 9 + a \\implies a = 6$."
+  },
+  {
+    "id": 2,
+    "question": "لتكن المتتالية المعرفة بـ $u_{n+1} = 2u_n - 7$ مع $u_0 = c$. القيمة التي تجعل $(u_n)$ ثابتة هي:",
+    "options": [
+      {
+        "text": "$c = 7$",
+        "isCorrect": true
+      },
+      {
+        "text": "$c = -7$",
+        "isCorrect": false
+      },
+      {
+        "text": "$c = \\frac{7}{2}$",
+        "isCorrect": false
+      },
+      {
+        "text": "$c = 14$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "بفرض $u_n = c$ لجميع قيم $n$:<br>$c = 2c - 7 \\implies c = 7$."
+  },
+  {
+    "id": 3,
+    "question": "لتكن المتتالية الحسابية $(u_n)$ حيث $u_n = 5n - 3$. ما قيمة المقدار: $4u_2 + 4u_3 + 4u_4 - (u_5 + u_6 + u_7)$؟",
+    "options": [
+      {
+        "text": "63",
+        "isCorrect": true
+      },
+      {
+        "text": "84",
+        "isCorrect": false
+      },
+      {
+        "text": "45",
+        "isCorrect": false
+      },
+      {
+        "text": "72",
+        "isCorrect": false
+      }
+    ],
+    "solution": "باستعمال خاصية التناظر الحسابي والحد الأوسط:<br>• $4(u_2 + u_3 + u_4) = 4(3u_3) = 12u_3$. ولدينا $u_3 = 5(3) - 3 = 12$، إذن الناتج $12 \\times 12 = 144$.<br>• $-(u_5 + u_6 + u_7) = -3u_6$. ولدينا $u_6 = 5(6) - 3 = 27$، إذن الناتج $-3 \\times 27 = -81$.<br>المقدار الكلي $= 144 - 81 = 63$."
+  },
+  {
+    "id": 4,
+    "question": "متتالية هندسية $(u_n)_{n \\ge 0}$ حدودها موجبة تحقق $\\frac{u_5}{u_1} = 16$ و $u_4 = 48$. عبارة الحد العام $u_n$ هي:",
+    "options": [
+      {
+        "text": "$u_n = 3 \\times 2^n$",
+        "isCorrect": true
+      },
+      {
+        "text": "$u_n = 6 \\times 2^{n-1}$",
+        "isCorrect": false
+      },
+      {
+        "text": "$u_n = 2 \\times 3^n$",
+        "isCorrect": false
+      },
+      {
+        "text": "$u_n = 3 \\times 4^n$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "$\\frac{u_5}{u_1} = q^4 = 16 \\implies q = 2$ (لأن الحدود موجبة).<br>لدينا $u_4 = u_0 \\cdot q^4 \\implies u_0 \\cdot 16 = 48 \\implies u_0 = 3$.<br>إذن $u_n = 3 \\times 2^n$."
+  },
+  {
+    "id": 5,
+    "question": "متتالية حسابية $(u_n)_{n \\ge 0}$ تحقق: $u_1 + u_2 = 11$ و $u_4 + u_5 = 29$. قيمة الأساس $r$ والحد الأول $u_0$ هما:",
+    "options": [
+      {
+        "text": "$r = 3 ,\\; u_0 = 1$",
+        "isCorrect": true
+      },
+      {
+        "text": "$r = 2 ,\\; u_0 = 3$",
+        "isCorrect": false
+      },
+      {
+        "text": "$r = 3 ,\\; u_0 = 2$",
+        "isCorrect": false
+      },
+      {
+        "text": "$r = 4 ,\\; u_0 = 1$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "نكتب الحدود بدلالة $u_0$ و $r$:<br>• $u_1 + u_2 = 2u_0 + 3r = 11$<br>• $u_4 + u_5 = 2u_0 + 9r = 29$<br>بطرح المعادلتين: $6r = 18 \\implies r = 3$.<br>بالتعويض: $2u_0 + 3(3) = 11 \\implies 2u_0 = 2 \\implies u_0 = 1$."
+  },
+  {
+    "id": 6,
+    "question": "لتكن المتتالية المعرفة تدريجياً: $u_{n+1} = \\frac{1}{2}\\left(u_n + \\frac{5}{u_n}\\right)$ مع $u_n > 0$. نعرّف $v_n = \\frac{u_n - \\sqrt{5}}{u_n + \\sqrt{5}}$. فإن المتتالية $(v_n)$ تحقق:",
+    "options": [
+      {
+        "text": "$v_{n+1} = v_n^2$",
+        "isCorrect": true
+      },
+      {
+        "text": "$v_{n+1} = 2v_n$",
+        "isCorrect": false
+      },
+      {
+        "text": "$v_{n+1} = \\sqrt{v_n}$",
+        "isCorrect": false
+      },
+      {
+        "text": "$v_{n+1} = 5v_n$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "نعوض $u_{n+1} = \\frac{u_n^2 + 5}{2u_n}$ في $v_{n+1}$:<br>$$v_{n+1} = \\frac{\\frac{u_n^2+5}{2u_n} - \\sqrt{5}}{\\frac{u_n^2+5}{2u_n} + \\sqrt{5}} = \\frac{u_n^2 - 2\\sqrt{5}u_n + 5}{u_n^2 + 2\\sqrt{5}u_n + 5} = \\left(\\frac{u_n - \\sqrt{5}}{u_n + \\sqrt{5}}\\right)^2 = v_n^2$$"
+  },
+  {
+    "id": 7,
+    "question": "لتكن المتتالية $(u_n)$ حيث $u_{n+1} = 16u_n + 15$ مع $u_n \\ge 0$. نضع $v_n = \\sqrt{u_n + 1}$. فإن $(v_n)$ متتالية:",
+    "options": [
+      {
+        "text": "هندسية أساسها $q = 4$",
+        "isCorrect": true
+      },
+      {
+        "text": "حسابية أساسها $r = 4$",
+        "isCorrect": false
+      },
+      {
+        "text": "هندسية أساسها $q = 16$",
+        "isCorrect": false
+      },
+      {
+        "text": "ثابتة",
+        "isCorrect": false
+      }
+    ],
+    "solution": "$$v_{n+1} = \\sqrt{u_{n+1} + 1} = \\sqrt{16u_n + 16} = 4\\sqrt{u_n + 1} = 4v_n$$<br>إذن المتتالية هندسية أساسها $q = 4$."
+  },
+  {
+    "id": 8,
+    "question": "لتكن المتتالية $u_{n+1} = \\frac{25}{10 - u_n}$ مع $u_n \\ne 5$. نضع $v_n = \\frac{1}{u_n - 5}$. طبيعة المتتالية $(v_n)$ هي:",
+    "options": [
+      {
+        "text": "حسابية أساسها $r = -\\frac{1}{5}$",
+        "isCorrect": true
+      },
+      {
+        "text": "حسابية أساسها $r = 5$",
+        "isCorrect": false
+      },
+      {
+        "text": "هندسية أساسها $q = 5$",
+        "isCorrect": false
+      },
+      {
+        "text": "ليست حسابية ولا هندسية",
+        "isCorrect": false
+      }
+    ],
+    "solution": "$$v_{n+1} = \\frac{1}{u_{n+1}-5} = \\frac{1}{\\frac{25}{10-u_n}-5} = \\frac{10-u_n}{25 - 50 + 5u_n} = \\frac{10-u_n}{5(u_n-5)}$$<br>$$v_{n+1} - v_n = \\frac{10 - u_n - 5}{5(u_n-5)} = \\frac{-(u_n-5)}{5(u_n-5)} = -\\frac{1}{5}$$<br>إذن $(v_n)$ حسابية أساسها $r = -\\frac{1}{5}$."
+  },
+  {
+    "id": 9,
+    "question": "لتكن $(u_n)$ و $(v_n)$ متتاليتين معرفتين بـ: $u_{n+1} = \\frac{u_n + v_n}{2}$ و $v_{n+1} = \\frac{u_{n+1} + v_n}{2}$. نضع $w_n = v_n - u_n$. المتتالية $(w_n)$ تكون:",
+    "options": [
+      {
+        "text": "هندسية أساسها $q = \\frac{1}{4}$",
+        "isCorrect": true
+      },
+      {
+        "text": "هندسية أساسها $q = \\frac{1}{2}$",
+        "isCorrect": false
+      },
+      {
+        "text": "حسابية أساسها $r = \\frac{1}{4}$",
+        "isCorrect": false
+      },
+      {
+        "text": "ثابتة",
+        "isCorrect": false
+      }
+    ],
+    "solution": "$$w_{n+1} = v_{n+1} - u_{n+1} = \\frac{v_n - u_{n+1}}{2} = \\frac{v_n - \\frac{u_n+v_n}{2}}{2} = \\frac{v_n - u_n}{4} = \\frac{1}{4}w_n$$<br>إذن هندسية أساسها $q = \\frac{1}{4}$."
+  },
+  {
+    "id": 10,
+    "question": "المقدار $8^{2n} - 3^{2n}$ أياً كان العدد الطبيعي $n \\ge 1$ يقبل القسمة دوماً على العدد:",
+    "options": [
+      {
+        "text": "55",
+        "isCorrect": true
+      },
+      {
+        "text": "35",
+        "isCorrect": false
+      },
+      {
+        "text": "11",
+        "isCorrect": false
+      },
+      {
+        "text": "25",
+        "isCorrect": false
+      }
+    ],
+    "solution": "$$8^{2n} - 3^{2n} = (8^2)^n - (3^2)^n = 64^n - 9^n$$<br>نعلم أن $a^n - b^n$ يقبل القسمة على $(a - b) = 64 - 9 = 55$."
+  },
+  {
+    "id": 11,
+    "question": "المقدار $3^{3n} - 2^{2n}$ أياً كان العدد الطبيعي $n \\ge 1$ هو دوماً مضاعف للعدد:",
+    "options": [
+      {
+        "text": "23",
+        "isCorrect": true
+      },
+      {
+        "text": "19",
+        "isCorrect": false
+      },
+      {
+        "text": "7",
+        "isCorrect": false
+      },
+      {
+        "text": "13",
+        "isCorrect": false
+      }
+    ],
+    "solution": "$$3^{3n} - 2^{2n} = (3^3)^n - (2^2)^n = 27^n - 4^n$$<br>يقبل القسمة على $27 - 4 = 23$."
+  },
+  {
+    "id": 12,
+    "question": "ما هو أصغر عدد طبيعي $n$ يحقق المتراجحة: $2^n \\ge n^2 + 1$؟",
+    "options": [
+      {
+        "text": "$n = 5$",
+        "isCorrect": true
+      },
+      {
+        "text": "$n = 4$",
+        "isCorrect": false
+      },
+      {
+        "text": "$n = 3$",
+        "isCorrect": false
+      },
+      {
+        "text": "$n = 6$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "نجرب الأعداد الطبيعية تصاعدياً:<br>• $n=1: 2^1 \\ge 2$ (محققة مساواة). لكن للأعداد الأكبر نتحقق من استمرارها:<br>• $n=2: 4 \\ge 5$ (خاطئة).<br>• $n=3: 8 \\ge 10$ (خاطئة).<br>• $n=4: 16 \\ge 17$ (خاطئة).<br>• $n=5: 32 \\ge 26$ (صحيحة وتستمر صحيحة لجميع $n \\ge 5$).<br>وبالتالي أصغر عدد طبيعي تبدأ منه المتراجحة بالتحقق الدائم هو $n=5$."
+  },
+  {
+    "id": 13,
+    "question": "في المتتالية الحسابية التي حدها الأول $u_0 = 4$ وأساسها $r = 3$، إذا كان $S = u_0 + u_1 + \\dots + u_n = 250$، فإن عدد الحدود في المجموع هو:",
+    "options": [
+      {
+        "text": "12 حداً",
+        "isCorrect": true
+      },
+      {
+        "text": "11 حداً",
+        "isCorrect": false
+      },
+      {
+        "text": "13 حداً",
+        "isCorrect": false
+      },
+      {
+        "text": "10 حدود",
+        "isCorrect": false
+      }
+    ],
+    "solution": "الحد الأخير $u_n = 4 + 3n$. وعدد الحدود هو $N = n+1$.<br>$$S = \\frac{n+1}{2}(4 + 4 + 3n) = \\frac{n+1}{2}(3n + 8) = 250 \\implies (n+1)(3n+8) = 500$$<br>$$3n^2 + 11n + 8 = 500 \\implies 3n^2 + 11n - 492 = 0$$<br>بحل المعادلة: $(n - 11)(3n + 44) = 0 \\implies n = 11$.<br>عدد الحدود $= n + 1 = 11 + 1 = 12$."
+  },
+  {
+    "id": 14,
+    "question": "لتكن $(u_n)$ متتالية حسابية حدها $u_2 = 1$. نعرّف المتتالية $w_n = 2^{u_n}$. ما قيمة الجداء $P = w_1 \\cdot w_2 \\cdot w_3$؟",
+    "options": [
+      {
+        "text": "8",
+        "isCorrect": true
+      },
+      {
+        "text": "4",
+        "isCorrect": false
+      },
+      {
+        "text": "16",
+        "isCorrect": false
+      },
+      {
+        "text": "2",
+        "isCorrect": false
+      }
+    ],
+    "solution": "$$P = w_1 \\cdot w_2 \\cdot w_3 = 2^{u_1 + u_2 + u_3}$$<br>بما أن الحدود حسابية متعاقبة، فإن $u_1 + u_2 + u_3 = 3u_2 = 3(1) = 3$.<br>إذن $P = 2^3 = 8$."
+  },
+  {
+    "id": 15,
+    "question": "قيمة المجموع $S = 1 + 3 + 3^2 + \\dots + 3^9$ تساوي:",
+    "options": [
+      {
+        "text": "$\\frac{3^{10} - 1}{2}$",
+        "isCorrect": true
+      },
+      {
+        "text": "$\\frac{3^9 - 1}{2}$",
+        "isCorrect": false
+      },
+      {
+        "text": "$3^{10} - 1$",
+        "isCorrect": false
+      },
+      {
+        "text": "$\\frac{3^{10} + 1}{2}$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "مجموع حدود متتالية هندسية حدها الأول $1$ وأساسها $q = 3$ وعدد حدودها $9 - 0 + 1 = 10$:<br>$$S = 1 \\cdot \\frac{1 - 3^{10}}{1 - 3} = \\frac{3^{10} - 1}{2}$$"
+  },
+  {
+    "id": 16,
+    "question": "لتكن $(t_n)$ و $(s_n)$ متتاليتين تحققان: $t_{n+1} = 2t_n + 3s_n$ و $s_{n+1} = t_n + 2s_n$. نضع $w_n = t_n^2 - 3s_n^2$. فإن المتتالية $(w_n)$ تكون:",
+    "options": [
+      {
+        "text": "متتالية ثابتة",
+        "isCorrect": true
+      },
+      {
+        "text": "متتالية هندسية أساسها 2",
+        "isCorrect": false
+      },
+      {
+        "text": "متتالية حسابية أساسها 1",
+        "isCorrect": false
+      },
+      {
+        "text": "متتالية متباعدة",
+        "isCorrect": false
+      }
+    ],
+    "solution": "$$w_{n+1} = t_{n+1}^2 - 3s_{n+1}^2 = (2t_n + 3s_n)^2 - 3(t_n + 2s_n)^2$$<br>$$= (4t_n^2 + 12t_n s_n + 9s_n^2) - 3(t_n^2 + 4t_n s_n + 4s_n^2) = t_n^2 - 3s_n^2 = w_n$$<br>بما أن $w_{n+1} = w_n$ فالمتتالية ثابتة."
+  },
+  {
+    "id": 17,
+    "question": "عدد حدود المجموع $S = u_5 + u_6 + \\dots + u_{28}$ هو:",
+    "options": [
+      {
+        "text": "24",
+        "isCorrect": true
+      },
+      {
+        "text": "23",
+        "isCorrect": false
+      },
+      {
+        "text": "25",
+        "isCorrect": false
+      },
+      {
+        "text": "28",
+        "isCorrect": false
+      }
+    ],
+    "solution": "عدد الحدود $= \\text{دليل الحد الأخير} - \\text{دليل الحد الأول} + 1 = 28 - 5 + 1 = 24$."
+  },
+  {
+    "id": 18,
+    "question": "المتتالية المعرفة بـ $u_n = \\frac{2n - 1}{n + 2}$ أياً كان $n \\ge 0$ هي متتالية:",
+    "options": [
+      {
+        "text": "متزايدة تماماً",
+        "isCorrect": true
+      },
+      {
+        "text": "متناقصة تماماً",
+        "isCorrect": false
+      },
+      {
+        "text": "ثابتة",
+        "isCorrect": false
+      },
+      {
+        "text": "غير مطردة",
+        "isCorrect": false
+      }
+    ],
+    "solution": "ندرس إشارة التابع المرفق $f(x) = \\frac{2x - 1}{x + 2}$:<br>$$f'(x) = \\frac{2(x+2) - 1(2x-1)}{(x+2)^2} = \\frac{5}{(x+2)^2} > 0$$<br>المشتق موجب تماماً، فالتابع متزايد تماماً، وبالتالي المتتالية $(u_n)$ متزايدة تماماً."
+  },
+  {
+    "id": 19,
+    "question": "المتتالية المعرفة بالصيغة $u_n = \\frac{3^n}{n!}$ أياً كان $n \\ge 1$ هي متتالية:",
+    "options": [
+      {
+        "text": "متناقصة تماماً بدءاً من $n = 3$",
+        "isCorrect": true
+      },
+      {
+        "text": "متزايدة تماماً دائماً",
+        "isCorrect": false
+      },
+      {
+        "text": "ثابتة",
+        "isCorrect": false
+      },
+      {
+        "text": "متناقصة فقط عند $n=1$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "حدود المتتالية موجبة تماماً، ندرس النسبة $\\frac{u_{n+1}}{u_n}$:<br>$$\\frac{u_{n+1}}{u_n} = \\frac{3^{n+1}}{(n+1)!} \\times \\frac{n!}{3^n} = \\frac{3}{n+1}$$<br>يكون $\\frac{3}{n+1} < 1 \\iff n+1 > 3 \\iff n > 2$. أي بدءاً من $n = 3$ تصبح متناقصة تماماً."
+  },
+  {
+    "id": 20,
+    "question": "المتتالية $u_n = \\frac{\\cos(n)}{n^2 + 1}$ أياً كان $n \\ge 0$ هي متتالية:",
+    "options": [
+      {
+        "text": "محدودة ومتقاربة نحو الصفر",
+        "isCorrect": true
+      },
+      {
+        "text": "متباعدة",
+        "isCorrect": false
+      },
+      {
+        "text": "محدودة وغير متقاربة",
+        "isCorrect": false
+      },
+      {
+        "text": "متزايدة تماماً",
+        "isCorrect": false
+      }
+    ],
+    "solution": "نعلم أن $-1 \\le \\cos(n) \\le 1$. بالقسمة على $n^2 + 1 > 0$:<br>$$-\\frac{1}{n^2+1} \\le u_n \\le \\frac{1}{n^2+1}$$<br>المتتالية محصورة ومحدودة، وبحسب مبرهنة الإحاطة نهايتها تساوي 0 عند $n \\to \\infty$، فهي متقاربة نحو الصفر."
+  },
+  {
+    "id": 21,
+    "question": "في متتالية حسابية $(u_n)$ إذا كان $u_{15} - u_7 = 24$، فإن أساس المتتالية $r$ هو:",
+    "options": [
+      {
+        "text": "3",
+        "isCorrect": true
+      },
+      {
+        "text": "4",
+        "isCorrect": false
+      },
+      {
+        "text": "2",
+        "isCorrect": false
+      },
+      {
+        "text": "6",
+        "isCorrect": false
+      }
+    ],
+    "solution": "$$u_{15} - u_7 = (15 - 7)r = 8r \\implies 8r = 24 \\implies r = 3$$"
+  },
+  {
+    "id": 22,
+    "question": "في متتالية هندسية حدودها موجبة، إذا كان $u_8 = 384$ و $u_5 = 48$، فإن الأساس $q$ يساوي:",
+    "options": [
+      {
+        "text": "2",
+        "isCorrect": true
+      },
+      {
+        "text": "3",
+        "isCorrect": false
+      },
+      {
+        "text": "4",
+        "isCorrect": false
+      },
+      {
+        "text": "8",
+        "isCorrect": false
+      }
+    ],
+    "solution": "$$\\frac{u_8}{u_5} = q^{8-5} = q^3 = \\frac{384}{48} = 8 \\implies q = 2$$"
+  },
+  {
+    "id": 23,
+    "question": "لتكن المتتالية $u_{n+1} = 3u_n - 8$ مع $u_0 = 5$. نضع $v_n = u_n - 4$. فإن المتتالية $(v_n)$ هي:",
+    "options": [
+      {
+        "text": "هندسية أساسها $q = 3$ وحدها الأول $v_0 = 1$",
+        "isCorrect": true
+      },
+      {
+        "text": "حسابية أساسها $r = 3$",
+        "isCorrect": false
+      },
+      {
+        "text": "هندسية أساسها $q = -8$",
+        "isCorrect": false
+      },
+      {
+        "text": "ثابتة",
+        "isCorrect": false
+      }
+    ],
+    "solution": "$$v_{n+1} = u_{n+1} - 4 = (3u_n - 8) - 4 = 3u_n - 12 = 3(u_n - 4) = 3v_n$$<br>وحدها الأول $v_0 = u_0 - 4 = 5 - 4 = 1$."
+  },
+  {
+    "id": 24,
+    "question": "بالاعتماد على السؤال السابق ($v_n = 3^n$ و $v_n = u_n - 4$)، فإن عبارة $u_n$ بدلالة $n$ هي:",
+    "options": [
+      {
+        "text": "$u_n = 3^n + 4$",
+        "isCorrect": true
+      },
+      {
+        "text": "$u_n = 3^n - 4$",
+        "isCorrect": false
+      },
+      {
+        "text": "$u_n = 4 \\times 3^n$",
+        "isCorrect": false
+      },
+      {
+        "text": "$u_n = 3^{n+1}$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "$$u_n = v_n + 4 = 3^n + 4$$"
+  },
+  {
+    "id": 25,
+    "question": "نهاية المتتالية $u_n = \\frac{4n^2 - 3n + 1}{2n^2 + 5}$ عندما تسعى $n$ إلى $+\\infty$ هي:",
+    "options": [
+      {
+        "text": "2",
+        "isCorrect": true
+      },
+      {
+        "text": "$+\\infty$",
+        "isCorrect": false
+      },
+      {
+        "text": "0",
+        "isCorrect": false
+      },
+      {
+        "text": "4",
+        "isCorrect": false
+      }
+    ],
+    "solution": "نأخذ الحد المسيطر في البسط على الحد المسيطر في المقام:<br>$$\\lim_{n \\to \\infty} \\frac{4n^2}{2n^2} = 2$$"
+  },
+  {
+    "id": 26,
+    "question": "نهاية المتتالية $u_n = 5 \\left(\\frac{2}{3}\\right)^n + 7$ عندما تسعى $n$ إلى $+\\infty$ هي:",
+    "options": [
+      {
+        "text": "7",
+        "isCorrect": true
+      },
+      {
+        "text": "$+\\infty$",
+        "isCorrect": false
+      },
+      {
+        "text": "12",
+        "isCorrect": false
+      },
+      {
+        "text": "0",
+        "isCorrect": false
+      }
+    ],
+    "solution": "بما أن أساس القوى $|q| = |\\frac{2}{3}| < 1$، فإن $\\lim_{n \\to \\infty} (\\frac{2}{3})^n = 0$.<br>إذن $\\lim_{n \\to \\infty} u_n = 5(0) + 7 = 7$."
+  },
+  {
+    "id": 27,
+    "question": "المتتالية $u_n = 4 \\left(\\frac{5}{4}\\right)^n$ عندما تسعى $n$ إلى $+\\infty$ تكون:",
+    "options": [
+      {
+        "text": "متباعدة ونهايتها $+\\infty$",
+        "isCorrect": true
+      },
+      {
+        "text": "متقاربة ونهايتها 0",
+        "isCorrect": false
+      },
+      {
+        "text": "متقاربة ونهايتها 4",
+        "isCorrect": false
+      },
+      {
+        "text": "ثابتة",
+        "isCorrect": false
+      }
+    ],
+    "solution": "بما أن الأساس $q = \\frac{5}{4} > 1$ والحد الأول موجب، فإن نهايتها $+\\infty$ فهي متباعدة."
+  },
+  {
+    "id": 28,
+    "question": "إذا كانت $(u_n)$ متتالية موجبة تحقق $\\frac{1}{u_{n+1}} - \\frac{1}{u_n} = 2$ مع $u_0 = 1$، فإن عبارة $u_n$ هي:",
+    "options": [
+      {
+        "text": "$u_n = \\frac{1}{2n + 1}$",
+        "isCorrect": true
+      },
+      {
+        "text": "$u_n = 2n + 1$",
+        "isCorrect": false
+      },
+      {
+        "text": "$u_n = \\frac{1}{n + 2}$",
+        "isCorrect": false
+      },
+      {
+        "text": "$u_n = 2^{-n}$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "نضع $v_n = \\frac{1}{u_n}$. نلاحظ أن $v_{n+1} - v_n = 2$، إذن $(v_n)$ متتالية حسابية أساسها $r = 2$ وحدها الأول $v_0 = 1$.<br>عبارة $v_n = v_0 + nr = 1 + 2n$.<br>وبالتالي: $u_n = \\frac{1}{v_n} = \\frac{1}{2n + 1}$."
+  },
+  {
+    "id": 29,
+    "question": "المتتالية $(u_n)$ تحقق $u_{n+2} = 5u_{n+1} - 6u_n$. إذا كان $u_0 = 2$ و $u_1 = 5$، فإن عبارة حدها العام هي:",
+    "options": [
+      {
+        "text": "$u_n = 2^n + 3^n$",
+        "isCorrect": true
+      },
+      {
+        "text": "$u_n = 2 \\times 3^n$",
+        "isCorrect": false
+      },
+      {
+        "text": "$u_n = 3 \\times 2^n - 1$",
+        "isCorrect": false
+      },
+      {
+        "text": "$u_n = 5 \\times 2^{n-1}$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "المعادلة المميزة: $r^2 - 5r + 6 = 0 \\implies (r - 2)(r - 3) = 0 \\implies r_1 = 2, r_2 = 3$.<br>الحد العام: $u_n = A \\cdot 2^n + B \\cdot 3^n$.<br>من الشروط الابتدائية:<br>• عند $n=0$: $A + B = 2$<br>• عند $n=1$: $2A + 3B = 5$<br>بحل الجملة نجد $A = 1$ و $B = 1$.<br>إذن $u_n = 2^n + 3^n$."
+  },
+  {
+    "id": 30,
+    "question": "في إثبات صحة القضية $E(n): 2^n \\ge n + 1$ بالتدريج أياً كان العدد الطبيعي $n \\ge 0$، فإن صحة القضية عند أصغر قيمة $n=0$ تعطي:",
+    "options": [
+      {
+        "text": "$1 \\ge 1$ وهي محققة",
+        "isCorrect": true
+      },
+      {
+        "text": "$0 \\ge 1$ وهي غير محققة",
+        "isCorrect": false
+      },
+      {
+        "text": "$2 \\ge 1$ وهي محققة",
+        "isCorrect": false
+      },
+      {
+        "text": "$1 \\ge 0$ وهي محققة",
+        "isCorrect": false
+      }
+    ],
+    "solution": "عند $n = 0$: الطرف الأيسر $2^0 = 1$، والطرف الأيمن $0 + 1 = 1$.<br>بما أن $1 \\ge 1$ محققة وصحيحة، فالقضية محققة عند $n=0$."
+  },
+  {
+    "id": 31,
+    "question": "في متتالية حسابية $(u_n)_{n=0}^{20}$، إذا كان $u_0 + u_{20} = 50$، فإن مجموع كل الحدود $S = u_0 + u_1 + \\dots + u_{20}$ يساوي:",
+    "options": [
+      {
+        "text": "525",
+        "isCorrect": true
+      },
+      {
+        "text": "500",
+        "isCorrect": false
+      },
+      {
+        "text": "1050",
+        "isCorrect": false
+      },
+      {
+        "text": "250",
+        "isCorrect": false
+      }
+    ],
+    "solution": "عدد الحدود هو $20 - 0 + 1 = 21$ حداً.<br>قانون المجموع: $S = \\frac{N}{2}(\\text{الأول} + \\text{الأخير}) = \\frac{21}{2}(50) = 21 \\times 25 = 525$."
+  },
+  {
+    "id": 32,
+    "question": "إذا كانت الأعداد $x ,\\; x+3 ,\\; 4x$ حدوداً متعاقبة لمتتالية هندسية حدودها موجبة، فإن قيمة $x$ هي:",
+    "options": [
+      {
+        "text": "$x = 3$",
+        "isCorrect": true
+      },
+      {
+        "text": "$x = 1$",
+        "isCorrect": false
+      },
+      {
+        "text": "$x = 2$",
+        "isCorrect": false
+      },
+      {
+        "text": "$x = 4$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "الحد الأوسط للثلاثية الهندسية يحقق: $(x + 3)^2 = x \\cdot 4x = 4x^2$.<br>$$x^2 + 6x + 9 = 4x^2 \\implies 3x^2 - 6x - 9 = 0 \\implies x^2 - 2x - 3 = 0$$<br>$$(x - 3)(x + 1) = 0$$<br>بما أن الحدود موجبة نأخذ $x = 3$."
+  },
+  {
+    "id": 33,
+    "question": "إذا كانت الأعداد $2a ,\\; a+5 ,\\; 4a-2$ حدوداً متعاقبة لمتتالية حسابية، فإن قيمة $a$ هي:",
+    "options": [
+      {
+        "text": "$a = 3$",
+        "isCorrect": true
+      },
+      {
+        "text": "$a = 2$",
+        "isCorrect": false
+      },
+      {
+        "text": "$a = 4$",
+        "isCorrect": false
+      },
+      {
+        "text": "$a = 5$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "الحد الأوسط يحقق: $2(a + 5) = 2a + (4a - 2)$.<br>$$2a + 10 = 6a - 2 \\implies 4a = 12 \\implies a = 3$$"
+  },
+  {
+    "id": 34,
+    "question": "لتكن المتتالية $(u_n)$ تحقق $3 - \\frac{1}{n} \\le u_n \\le 3 + \\frac{2}{n^2}$ أياً كان $n \\ge 1$. فإن نهاية $u_n$ عند $+\\infty$ هي:",
+    "options": [
+      {
+        "text": "3",
+        "isCorrect": true
+      },
+      {
+        "text": "0",
+        "isCorrect": false
+      },
+      {
+        "text": "$+\\infty$",
+        "isCorrect": false
+      },
+      {
+        "text": "غير معينة",
+        "isCorrect": false
+      }
+    ],
+    "solution": "لدينا $\\lim_{n \\to \\infty} (3 - \\frac{1}{n}) = 3$ و $\\lim_{n \\to \\infty} (3 + \\frac{2}{n^2}) = 3$.<br>حسب مبرهنة الإحاطة، تكون نهاية $u_n$ هي 3."
+  },
+  {
+    "id": 35,
+    "question": "إذا كانت المتتالية $(u_n)$ متزايدة تماماً ومحدودة من الأعلى بالعدد 4، فإن المتتالية $(u_n)$:",
+    "options": [
+      {
+        "text": "متقاربة ونهايتها $L \\le 4$",
+        "isCorrect": true
+      },
+      {
+        "text": "متباعدة نحو $+\\infty$",
+        "isCorrect": false
+      },
+      {
+        "text": "متقاربة ونهايتها حتماً أكبر من 4",
+        "isCorrect": false
+      },
+      {
+        "text": "متذبذبة",
+        "isCorrect": false
+      }
+    ],
+    "solution": "كل متتالية متزايدة ومحدودة من الأعلى تكون متقاربة ونهايتها أصغر أو تساوي الحد الأعلى ($L \\le 4$)."
+  },
+  {
+    "id": 36,
+    "question": "متتالية معرفة بـ $u_0 = 1$ و $u_{n+1} = \\sqrt{2u_n + 3}$. بافتراض أن المتتالية متقاربة نحو $L > 0$، فإن قيمة $L$ هي:",
+    "options": [
+      {
+        "text": "$L = 3$",
+        "isCorrect": true
+      },
+      {
+        "text": "$L = -1$",
+        "isCorrect": false
+      },
+      {
+        "text": "$L = \\sqrt{5}$",
+        "isCorrect": false
+      },
+      {
+        "text": "$L = 2$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "النهاية $L$ تحقق حل المعادلة $L = f(L)$:<br>$$L = \\sqrt{2L + 3} \\implies L^2 = 2L + 3 \\implies L^2 - 2L - 3 = 0 \\implies (L - 3)(L + 1) = 0$$<br>بما أن $u_n > 0$ فإن النهاية موجبة، إذن $L = 3$."
+  },
+  {
+    "id": 37,
+    "question": "مجموع الأعداد الفردية الأولى $S_n = 1 + 3 + 5 + \\dots + (2n - 1)$ يساوي:",
+    "options": [
+      {
+        "text": "$n^2$",
+        "isCorrect": true
+      },
+      {
+        "text": "$n(n+1)$",
+        "isCorrect": false
+      },
+      {
+        "text": "$\\frac{n(2n-1)}{2}$",
+        "isCorrect": false
+      },
+      {
+        "text": "$2n^2 - 1$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "متتالية حسابية حدها الأول 1 والأخير $2n-1$ وأساسها 2 وعدد حدودها $n$:<br>$$S_n = \\frac{n}{2}(1 + 2n - 1) = \\frac{n(2n)}{2} = n^2$$"
+  },
+  {
+    "id": 38,
+    "question": "مجموع الأعداد الزوجية الأولى $S_n = 2 + 4 + 6 + \\dots + 2n$ يساوي:",
+    "options": [
+      {
+        "text": "$n(n+1)$",
+        "isCorrect": true
+      },
+      {
+        "text": "$n^2$",
+        "isCorrect": false
+      },
+      {
+        "text": "$2n(n+1)$",
+        "isCorrect": false
+      },
+      {
+        "text": "$\\frac{n(n+1)}{2}$",
+        "isCorrect": false
+      }
+    ],
+    "solution": "$$S_n = 2(1 + 2 + 3 + \\dots + n) = 2 \\times \\frac{n(n+1)}{2} = n(n+1)$$"
+  },
+  {
+    "id": 39,
+    "question": "نقول عن متتاليتين $(u_n)$ و $(v_n)$ أنهما متجاورتان إذا تحقق:",
+    "options": [
+      {
+        "text": "إحداهما متزايدة والأخرى متناقصة، و $\\lim_{n \\to \\infty}(u_n - v_n) = 0$",
+        "isCorrect": true
+      },
+      {
+        "text": "كلاهما متزايدتان ولهما نفس النهاية",
+        "isCorrect": false
+      },
+      {
+        "text": "كلاهما متناقصتان",
+        "isCorrect": false
+      },
+      {
+        "text": "مجموعهما متتالية ثابتة",
+        "isCorrect": false
+      }
+    ],
+    "solution": "وفق التعريف الوزاري: تكون المتتاليتان متجاورتين إذا وفقط إذا كانت إحداهما متزايدة والأخرى متناقصة، وفرقهما يسعى إلى الصفر عند اللانهاية."
+  },
+  {
+    "id": 40,
+    "question": "لتكن المتتالية $u_n = (-1)^n + \\frac{1}{n}$ أياً كان $n \\ge 1$. فإن المتتالية $(u_n)$:",
+    "options": [
+      {
+        "text": "محدودة وغير متقاربة",
+        "isCorrect": true
+      },
+      {
+        "text": "متقاربة ونهايتها 0",
+        "isCorrect": false
+      },
+      {
+        "text": "متباعدة نحو $+\\infty$",
+        "isCorrect": false
+      },
+      {
+        "text": "متناقصة تماماً",
+        "isCorrect": false
+      }
+    ],
+    "solution": "الحدود تتقلب بسبب $(-1)^n$ (فالحدود الزوجية تسعى إلى 1، والفردية تسعى إلى -1)، وبالتالي ليس لها نهاية وحيدة (غير متقاربة). لكن قيمها محصورة دوماً في المجال $[-1, 2]$ فهي محدودة."
+  }
+];
 
   function renderQuestions() {
     const container = document.getElementById('questions-list');
     container.innerHTML = '';
+
     quizData.forEach((q, index) => {
+      const card = document.createElement('div');
+      card.className = 'question-card';
+      card.id = `q-card-${index}`;
+
       let optionsHtml = '';
       q.options.forEach((opt, optIndex) => {
         optionsHtml += `
@@ -245,44 +1045,86 @@
           </label>
         `;
       });
-      container.innerHTML += `
-        <div class="question-card" id="q-card-${index}">
-          <div class="q-header">
-            <span class="q-num">السؤال ${index + 1}</span>
-            <span style="background:#e0f2fe; color:#0369a1; padding:3px 10px; border-radius:6px; font-size:0.85rem; font-weight:600;">درجة واحدة</span>
-          </div>
-          <div class="q-text">${q.question}</div>
-          <div class="options-grid">${optionsHtml}</div>
-          <div class="solution-box" id="sol-${index}">
-            <h4>💡 طريقة الحل النموذجية (منصة ammar):</h4>
-            <div class="solution-content">${q.solution}</div>
-          </div>
+
+      card.innerHTML = `
+        <div class="q-header">
+          <span class="q-num">السؤال ${index + 1}</span>
+          <span class="q-points">درجة واحدة</span>
+        </div>
+        <div class="q-text">${q.question}</div>
+        <div class="options-grid">${optionsHtml}</div>
+        <div class="solution-box" id="sol-${index}">
+          <h4>💡 طريقة الحل النموذجية (منصة ammar):</h4>
+          <div class="solution-content">${q.solution}</div>
         </div>
       `;
+      container.appendChild(card);
     });
-    if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise();
+
+    if (window.MathJax && MathJax.typesetPromise) {
+      MathJax.typesetPromise();
+    }
   }
 
   function gradeQuiz() {
     let score = 0;
+    let total = quizData.length;
+
     quizData.forEach((q, qIndex) => {
-      const selected = document.querySelector(`input[name="question_${qIndex}"]:checked`);
-      document.getElementById(`sol-${qIndex}`).style.display = 'block';
+      const selectedRadio = document.querySelector(`input[name="question_${qIndex}"]:checked`);
+      const solBox = document.getElementById(`sol-${qIndex}`);
+      solBox.style.display = 'block';
+
       q.options.forEach((opt, optIndex) => {
         const lbl = document.getElementById(`label-${qIndex}-${optIndex}`);
-        lbl.querySelector('input').disabled = true;
-        if (opt.isCorrect) lbl.classList.add('is-correct');
-        if (selected && parseInt(selected.value) === optIndex && !opt.isCorrect) lbl.classList.add('is-wrong');
+        const radio = lbl.querySelector('input');
+        radio.disabled = true;
+
+        if (opt.isCorrect) {
+          lbl.classList.add('is-correct');
+        }
+        if (selectedRadio && parseInt(selectedRadio.value) === optIndex && !opt.isCorrect) {
+          lbl.classList.add('is-wrong');
+        }
       });
-      if (selected && q.options[parseInt(selected.value)].isCorrect) score++;
+
+      if (selectedRadio && q.options[parseInt(selectedRadio.value)].isCorrect) {
+        score++;
+      }
     });
 
-    document.getElementById('score-display').innerText = score;
-    document.getElementById('results-card').style.display = 'block';
-    document.getElementById('btn-submit').style.display = 'none';
-    document.getElementById('btn-reset').style.display = 'inline-block';
+    const resultsCard = document.getElementById('results-card');
+    const scoreDisplay = document.getElementById('score-display');
+    const scoreMax = document.getElementById('score-max');
+    const resultMessage = document.getElementById('result-message');
+    const btnSubmit = document.getElementById('btn-submit');
+    const btnReset = document.getElementById('btn-reset');
+
+    scoreDisplay.innerText = score;
+    scoreMax.innerText = `من ${total}`;
+
+    if (score >= total * 0.9) {
+      resultMessage.innerText = "ما شاء الله! مستوى امتياز وتفوق 🌟";
+      resultMessage.style.color = "#15803d";
+    } else if (score >= total * 0.7) {
+      resultMessage.innerText = "مستوى ممتاز جداً! أحسنت 👏";
+      resultMessage.style.color = "#0369a1";
+    } else if (score >= total * 0.5) {
+      resultMessage.innerText = "جيد، راجع طرق الحل لتثبيت الأفكار 👍";
+      resultMessage.style.color = "#b45309";
+    } else {
+      resultMessage.innerText = "تحتاج إلى مزيد من التركيز ومراجعة القواعد 💪";
+      resultMessage.style.color = "#b91c1c";
+    }
+
+    resultsCard.style.display = 'block';
+    btnSubmit.style.display = 'none';
+    btnReset.style.display = 'inline-block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise();
+
+    if (window.MathJax && MathJax.typesetPromise) {
+      MathJax.typesetPromise();
+    }
   }
 
   function resetQuiz() {
@@ -290,11 +1132,17 @@
     document.getElementById('results-card').style.display = 'none';
     document.getElementById('btn-submit').style.display = 'inline-block';
     document.getElementById('btn-reset').style.display = 'none';
+
     document.querySelectorAll('.option-label').forEach(lbl => {
       lbl.classList.remove('is-correct', 'is-wrong');
-      lbl.querySelector('input').disabled = false;
+      const radio = lbl.querySelector('input');
+      if (radio) radio.disabled = false;
     });
-    document.querySelectorAll('.solution-box').forEach(sb => sb.style.display = 'none');
+
+    document.querySelectorAll('.solution-box').forEach(sb => {
+      sb.style.display = 'none';
+    });
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
